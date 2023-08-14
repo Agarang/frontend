@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Landing, SignUp } from "../screens";
+import { Landing, SignUp, Main } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +21,8 @@ const StackNav = () => {
           headerStyle: { backgroundColor: "#fff1ef" },
         }}
       />
+
+      <Stack.Screen name="Main" component={Main} />
     </Stack.Navigator>
   );
 };

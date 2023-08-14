@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import {
-  Text,
-  Button,
-  Dimensions,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { Text, Dimensions, TouchableOpacity } from "react-native";
 
 const Width = Dimensions.get("window").width;
 const Height = Dimensions.get("window").height;
@@ -23,7 +17,6 @@ const LogoContainer = styled.SafeAreaView`
 `;
 
 const StyledInput = styled.TextInput`
-  display: block;
   width: 80%;
   height: 45px;
   margin: 3px;
@@ -31,7 +24,6 @@ const StyledInput = styled.TextInput`
   background-color: #ffffff;
   border: #ffc7bf;
   border-radius: 50px;
-  cursor: ;
 `;
 
 const StyledButton = styled.TouchableOpacity`
