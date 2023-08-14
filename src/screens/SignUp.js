@@ -20,7 +20,6 @@ const StyledText = styled.Text`
 `;
 
 const StyledInput = styled.TextInput`
-  display: block;
   width: 80%;
   height: 45px;
   margin: 3px;
@@ -28,7 +27,6 @@ const StyledInput = styled.TextInput`
   background-color: #ffffff;
   border: #ffc7bf;
   border-radius: 50px;
-  cursor: ;
 `;
 
 const StyledButton = styled.TouchableOpacity`
@@ -61,7 +59,7 @@ const SignUp = ({ navigation }) => {
       <StyledText>비밀번호</StyledText>
       <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
       <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
-      <StyledButton onPress={() => navigation.navigate("SignUp")}>
+      <StyledButton onPress={() => navigation.navigate("Main")}>
         <ButtonText>완료</ButtonText>
       </StyledButton>
     </Container>
