@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Landing, SignUp, Main } from "../screens";
+import { Landing, SignUp, Main, Chat } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +23,7 @@ const StackNav = () => {
       />
 
       <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
 };

@@ -53,12 +53,16 @@ const UploadContainer = styled.View`
   float: left;
 `;
 
-const Main = () => {
+const ChatIcon = styled.Image`
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+`;
+
+const Main = ({ navigation }) => {
   return (
     <MainContainer>
-      <UploadContainer>
-        <Text>안녕</Text>
-      </UploadContainer>
+      <UploadContainer></UploadContainer>
 
       <MainHeader>
         <MainHeaderContainer>
@@ -81,6 +85,9 @@ const Main = () => {
 
       <Container>
         <Text>메인페이지</Text>
+        <IconContainer onPress={() => navigation.navigate("Chat")}>
+          <ChatIcon source={require("../../assets/images/chat_icon.png")} />
+        </IconContainer>
       </Container>
     </MainContainer>
   );
