@@ -24,7 +24,7 @@ const RetryButton = styled.TouchableOpacity`
   height: 50px;
   border-radius: 10px;
   background-color: #ffffff;
-  border: 2px solid #ffc7bf;
+  border: 1.5px solid #ffc7bf;
 `;
 
 const MeetButton = styled.TouchableOpacity`
@@ -33,7 +33,7 @@ const MeetButton = styled.TouchableOpacity`
   height: 50px;
   border-radius: 10px;
   background-color: #ff7360;
-  border: 2px solid #ff6853;
+  border: 1.5px solid #ff6853;
 `;
 
 //다시하기 텍스트
