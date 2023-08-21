@@ -33,7 +33,7 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
-const Complete = () => {
+const Complete = ({ navigation }) => {
   return (
     <Container>
       <Text>우리 쑥쑥이</Text>
@@ -44,7 +44,7 @@ const Complete = () => {
 
       <Text>자, 이제 우리 쑥쑥이를 만나러 가보실까요?</Text>
 
-      <StyledButton>
+      <StyledButton onPress={() => navigation.navigate("Result")}>
         <ButtonText>우리 아가 만나러 가기</ButtonText>
       </StyledButton>
     </Container>

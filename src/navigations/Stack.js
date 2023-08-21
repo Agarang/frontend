@@ -1,6 +1,14 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Landing, SignUp, Main, Chat, Loading, Complete } from "../screens";
+import {
+  Landing,
+  SignUp,
+  Main,
+  Chat,
+  Loading,
+  Complete,
+  Result,
+} from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -26,6 +34,7 @@ const StackNav = () => {
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="Loading" component={Loading} />
       <Stack.Screen name="Complete" component={Complete} />
+      <Stack.Screen name="Result" component={Result} />
     </Stack.Navigator>
   );
 };
