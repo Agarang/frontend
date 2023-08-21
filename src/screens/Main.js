@@ -18,6 +18,7 @@ const MainContainer = styled.View`
   flex: 1;
   align-items: center;
 `;
+
 const Container = styled.SafeAreaView`
   flex: 3;
   background-color: #fff1ef;
@@ -27,14 +28,35 @@ const Container = styled.SafeAreaView`
 
 const MainHeaderContainer = styled.SafeAreaView`
   display: block;
-  width: 90%;
+  width: 100%;
   margin: 12px 5px 5px 5px;
   display: flex;
   flex-direction: row;
   flex-flow: row nowrap;
   justify-content: space-between;
 `;
-const LogoContainer = styled.SafeAreaView``;
+const SubHeaderContainer = styled.View`
+  display: block;
+  width: 100%;
+  margin: 12px 0px 5px 5px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
+
+const DdayBackground = styled.ImageBackground`
+  width: 130px;
+  height: 100px;
+  object-fit: cover;
+  padding: 30px;
+`;
+
+const DdayText = styled.Text`
+  font-size: 12px;
+  color: white;
+`;
+
 const IconsContainer = styled.SafeAreaView`
   flex-direction: row;
 `;
@@ -111,8 +133,8 @@ const ToAlbumButton = styled.TouchableOpacity`
 const StyledButton = styled.TouchableOpacity`
   margin-right: 5px;
   margin-top: 10px;
-  width: 50%;
-  height: 40px;
+  width: 40%;
+  height: 30px;
   border-radius: 50px;
   background-color: #ff7360;
   border: 3px solid #ff6853;
@@ -124,9 +146,9 @@ const ButtonText = styled.Text`
   color: white;
   align-self: center;
   justify-content: center;
-  margin-top: 7px;
-  font-weight: 800;
-  font-size: 18px;
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 16px;
 `;
 
 const Main = ({ navigation }) => {
@@ -182,32 +204,42 @@ const Main = ({ navigation }) => {
             </IconContainer>
           </IconsContainer>
         </MainHeaderContainer>
-        <Text>쑥쑥이의 엄마님 안녕하세요! {"\n"}쑥쑥이와 대화해요!</Text>
 
-        <Text>메인페이지</Text>
+        <SubHeaderContainer>
+          <Text>쑥쑥이의 엄마님 안녕하세요! {"\n"}쑥쑥이와 대화해요!</Text>
+
+          <DdayBackground
+            source={require("../../assets/images/dday-background.png")}
+          >
+            <DdayText>쑥쑥이와 만날 날</DdayText>
+            <DdayText>D-20</DdayText>
+          </DdayBackground>
+        </SubHeaderContainer>
         <Button
           title="로딩페이지로"
           onPress={() => navigation.navigate("Loading")}
         />
-        {selectedImage && (
-          <Image
-            source={{ uri: selectedImage }}
-            style={{ width: 200, height: 200 }}
-          />
-        )}
+
         <PicContainer>
           <ImageBackground
             source={require("../../assets/images/main-pic-container.png")}
             style={styles.picBack}
           >
-            <ToGalaryContainer onPress={pickImage}>
-              <GalaryIcon
-                source={require("../../assets/images/galary-icon.png")}
+            {selectedImage ? (
+              <Image
+                source={{ uri: selectedImage }}
+                style={{ width: 300, height: 300, borderRadius: 5 }}
               />
-              <GallaryText>
-                초음파 사진 업로드하여{"\n"}우리 아이의 사진을 만들어 보세요!
-              </GallaryText>
-            </ToGalaryContainer>
+            ) : (
+              <ToGalaryContainer onPress={pickImage}>
+                <GalaryIcon
+                  source={require("../../assets/images/galary-icon.png")}
+                />
+                <GallaryText>
+                  초음파 사진 업로드하여{"\n"}우리 아이의 사진을 만들어 보세요!
+                </GallaryText>
+              </ToGalaryContainer>
+            )}
 
             <StyledButton onPress={pickImage}>
               <ButtonText>초음파 업데이트</ButtonText>
@@ -226,4 +258,5 @@ const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
   picBack: { width: 350, height: 420 },
 });
+
 export default Main;
