@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
+  View,
   Text,
   Dimensions,
   Image,
   ImageBackground,
   StyleSheet,
+  Button,
 } from "react-native";
 import styled from "styled-components/native";
+import * as ImagePicker from "expo-image-picker";
+
 const Width = Dimensions.get("window").width;
 const Height = Dimensions.get("window").height;
 
@@ -46,6 +50,20 @@ const StyledIcon = styled.Image`
   object-fit: contain;
 `;
 
+const ToGalaryContainer = styled.TouchableOpacity`
+  margin-top: 20px;
+  margin-right: 14px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-right: 60px;
+  padding-left: 60px;
+  background-color: #fff1ef;
+  border-radius: 5px;
+  border: 2px dashed #ffc7bf;
+  align-self: center;
+  justify-content: center;
+`;
+
 const IconContainer = styled.TouchableOpacity`
   margin-left: 3px;
   margin-right: 2px;
@@ -61,6 +79,21 @@ const ChatIcon = styled.Image`
   object-fit: contain;
 `;
 
+//갤러리 아이콘
+const GalaryIcon = styled.Image`
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+`;
+
+const GallaryText = styled.Text`
+  color: #ff8f80;
+  align-self: center;
+  justify-content: center;
+  margin-top: 7px;
+  font-weight: 800;
+  font-size: 18px;
+`;
 const PicContainer = styled.View`
   width: 100%;
   height: 60%;
@@ -74,7 +107,60 @@ const ToAlbumButton = styled.TouchableOpacity`
   height: 100px;
 `;
 
+//버튼 스타일
+const StyledButton = styled.TouchableOpacity`
+  margin-right: 5px;
+  margin-top: 10px;
+  width: 50%;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #ff7360;
+  border: 3px solid #ff6853;
+  align-self: center;
+`;
+
+//버튼 텍스트
+const ButtonText = styled.Text`
+  color: white;
+  align-self: center;
+  justify-content: center;
+  margin-top: 7px;
+  font-weight: 800;
+  font-size: 18px;
+`;
+
 const Main = ({ navigation }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("갤러리 접근 권한이 필요합니다.");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setSelectedImage(result.uri);
+      }
+    } catch (error) {
+      console.log("Error picking image: ", error);
+    }
+  };
+
   return (
     <MainContainer>
       <ImageBackground
@@ -100,17 +186,31 @@ const Main = ({ navigation }) => {
 
         <Text>메인페이지</Text>
 
+        {selectedImage && (
+          <Image
+            source={{ uri: selectedImage }}
+            style={{ width: 200, height: 200 }}
+          />
+        )}
         <PicContainer>
           <ImageBackground
             source={require("../../assets/images/main-pic-container.png")}
             style={styles.picBack}
           >
-            <ToAlbumButton>
-              <Text>앨범</Text>
-            </ToAlbumButton>
+            <ToGalaryContainer onPress={pickImage}>
+              <GalaryIcon
+                source={require("../../assets/images/galary-icon.png")}
+              />
+              <GallaryText>
+                초음파 사진 업로드하여{"\n"}우리 아이의 사진을 만들어 보세요!
+              </GallaryText>
+            </ToGalaryContainer>
+
+            <StyledButton onPress={pickImage}>
+              <ButtonText>초음파 업데이트</ButtonText>
+            </StyledButton>
           </ImageBackground>
         </PicContainer>
-
         <IconContainer onPress={() => navigation.navigate("Chat")}>
           <ChatIcon source={require("../../assets/images/chat_icon.png")} />
         </IconContainer>
