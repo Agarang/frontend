@@ -185,7 +185,10 @@ const Main = ({ navigation }) => {
         <Text>쑥쑥이의 엄마님 안녕하세요! {"\n"}쑥쑥이와 대화해요!</Text>
 
         <Text>메인페이지</Text>
-
+        <Button
+          title="로딩페이지로"
+          onPress={() => navigation.navigate("Loading")}
+        />
         {selectedImage && (
           <Image
             source={{ uri: selectedImage }}
