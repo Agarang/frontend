@@ -20,6 +20,10 @@ const Loading = ({ navigation }) => {
       <PercentageText>20%</PercentageText>
       <Text>우리 아이 사진 생성중...</Text>
       <Text>(32초 남았어요!)</Text>
+      <Button
+        title="완료페이지로"
+        onPress={() => navigation.navigate("Complete")}
+      />
     </Container>
   );
 };
