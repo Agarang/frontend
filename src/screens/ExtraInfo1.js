@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions } from "react-native";
-
-// const Width = Dimensions.get("window").width;
-// const Height = Dimensions.get("window").height;
+import { Text, Dimensions, Alert, View, StyleSheet } from "react-native";
+import RadioGroup from "react-native-radio-buttons-group";
 
 const Container = styled.SafeAreaView`
   background-color: #fff1ef;
@@ -84,10 +82,51 @@ const ButtonsContainer = styled.SafeAreaView`
   background-color: #fff1ef;
 `;
 const ExtraInfo1 = ({ navigation }) => {
+  const [value, setValue] = useState(null);
+  const [checked, setChecked] = React.useState("first");
+
+  const radioButtons = useMemo(
+    () => [
+      {
+        id: "1", // acts as primary key, should be unique and non-empty string
+        color: "#FF7360",
+        label: "엄마",
+        value: "1",
+        labelStyle: styles.labelStyle,
+      },
+      {
+        id: "2",
+        color: "#FF7360",
+        label: "아빠",
+        value: "2",
+      },
+      {
+        id: "3",
+        color: "#FF7360",
+        label: "그 외 가족",
+        value: "3",
+      },
+      {
+        id: "4",
+        color: "#FF7360",
+        label: "지인",
+        value: "4",
+      },
+    ],
+    []
+  );
+
+  const [selectedId, setSelectedId] = useState();
+
+  const RadioSelected = () => {
+    setSelectedId;
+  };
+
   return (
     <Container>
       <Text>정말 반가워요!</Text>
       <Text>회원가입이 완료되었어요!</Text>
+
       <StyledText>
         회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
         있어요
@@ -103,6 +142,14 @@ const ExtraInfo1 = ({ navigation }) => {
       <StyledText>닉네임</StyledText>
       <StyledInput placeholder="뭐라고 불러드릴까요?" />
       <StyledText>우리 아이와는 어떤 관계이신가요?</StyledText>
+
+      <RadioGroup
+        layout="row"
+        labelStyle={{ color: "blue" }}
+        radioButtons={radioButtons}
+        onPress={setSelectedId}
+        selectedId={selectedId}
+      />
       <ButtonsContainer>
         <RetryButton onPress={() => navigation.navigate("main")}>
           <RetryText>건너뛰기</RetryText>
@@ -114,5 +161,10 @@ const ExtraInfo1 = ({ navigation }) => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  labelStyle: { color: "#FF7360", fontWeight: 700 },
+  picBack: { width: 350, height: 420 },
+});
 
 export default ExtraInfo1;
