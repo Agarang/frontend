@@ -131,10 +131,10 @@ const ToAlbumButton = styled.TouchableOpacity`
 
 //버튼 스타일
 const StyledButton = styled.TouchableOpacity`
-  margin-right: 5px;
-  margin-top: 10px;
+  margin-right: 17px;
+  margin-top: 16px;
   width: 40%;
-  height: 30px;
+  height: 40px;
   border-radius: 50px;
   background-color: #ff7360;
   border: 3px solid #ff6853;
@@ -146,7 +146,7 @@ const ButtonText = styled.Text`
   color: white;
   align-self: center;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: 8px;
   font-weight: 600;
   font-size: 16px;
 `;
@@ -223,7 +223,13 @@ const Main = ({ navigation }) => {
             {selectedImage ? (
               <Image
                 source={{ uri: selectedImage }}
-                style={{ width: 300, height: 300, borderRadius: 5 }}
+                style={{
+                  width: 300,
+                  height: 300,
+                  borderRadius: 5,
+                  marginTop: 23,
+                  marginLeft: 16,
+                }}
               />
             ) : (
               <ToGalaryContainer onPress={pickImage}>
