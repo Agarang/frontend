@@ -240,10 +240,15 @@ const Main = ({ navigation }) => {
                 </GallaryText>
               </ToGalaryContainer>
             )}
-
-            <StyledButton onPress={pickImage}>
-              <ButtonText>초음파 업데이트</ButtonText>
-            </StyledButton>
+            {selectedImage ? (
+              <StyledButton onPress={() => navigation.navigate("Loading")}>
+                <ButtonText>아가 보러 가기</ButtonText>
+              </StyledButton>
+            ) : (
+              <StyledButton onPress={pickImage}>
+                <ButtonText>초음파 업데이트</ButtonText>
+              </StyledButton>
+            )}
           </ImageBackground>
         </PicContainer>
         <IconContainer onPress={() => navigation.navigate("Chat")}>

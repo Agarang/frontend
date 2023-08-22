@@ -9,7 +9,7 @@ const Container = styled.SafeAreaView`
   background-color: #fff1ef;
   align-items: center;
   justify-content: center;
-  height: ${Height};
+  flex: 1;
 `;
 
 const StyledText = styled.Text`
@@ -47,23 +47,31 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
-const SignUp = ({ navigation }) => {
+const ExtraInfo1 = ({ navigation }) => {
   return (
     <Container>
-      <StyledText>이메일주소</StyledText>
-      <StyledInput placeholder="email@email.com" />
+      <Text>정말 반가워요!</Text>
+      <Text>회원가입이 완료되었어요!</Text>
+      <StyledText>
+        회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
+        있어요
+      </StyledText>
+      <StyledText>이름</StyledText>
+      <StyledInput placeholder="이산모" />
 
-      <StyledText>휴대폰 번호</StyledText>
-      <StyledInput placeholder="010-1234-5678" />
+      <StyledText>생년월일</StyledText>
+      <StyledInput placeholder="8자 ex)19800101" />
 
-      <StyledText>비밀번호</StyledText>
-      <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
-      <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
-      <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
+      <StyledText>우리아이의 태명을 알려주세요.</StyledText>
+      <StyledInput placeholder="우리아이의 태명은 뭔가요?" />
+      <StyledText>닉네임</StyledText>
+      <StyledInput placeholder="뭐라고 불러드릴까요?" />
+      <StyledText>우리 아이와는 어떤 관계이신가요?</StyledText>
+      <StyledButton onPress={() => navigation.navigate("Main")}>
         <ButtonText>완료</ButtonText>
       </StyledButton>
     </Container>
   );
 };
 
-export default SignUp;
+export default ExtraInfo1;

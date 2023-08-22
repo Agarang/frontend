@@ -8,6 +8,7 @@ import {
   Loading,
   Complete,
   Result,
+  ExtraInfo1,
 } from "../screens";
 
 const Stack = createStackNavigator();
@@ -35,6 +36,7 @@ const StackNav = () => {
       <Stack.Screen name="Loading" component={Loading} />
       <Stack.Screen name="Complete" component={Complete} />
       <Stack.Screen name="Result" component={Result} />
+      <Stack.Screen name="ExtraInfo1" component={ExtraInfo1} />
     </Stack.Navigator>
   );
 };
