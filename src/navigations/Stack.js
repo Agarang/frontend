@@ -10,6 +10,8 @@ import {
   Result,
   ExtraInfo1,
   ExtraInfo2,
+  ServiceInfo,
+  Mypage,
 } from "../screens";
 
 const Stack = createStackNavigator();
@@ -39,6 +41,8 @@ const StackNav = () => {
       <Stack.Screen name="Result" component={Result} />
       <Stack.Screen name="ExtraInfo1" component={ExtraInfo1} />
       <Stack.Screen name="ExtraInfo2" component={ExtraInfo2} />
+      <Stack.Screen name="ServiceInfo" component={ServiceInfo} />
+      <Stack.Screen name="Mypage" component={Mypage} />
     </Stack.Navigator>
   );
 };

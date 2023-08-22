@@ -197,7 +197,7 @@ const Main = ({ navigation }) => {
                 source={require("../../assets/images/notification_icon.png")}
               />
             </IconContainer>
-            <IconContainer>
+            <IconContainer onPress={() => navigation.navigate("Mypage")}>
               <StyledIcon
                 source={require("../../assets/images/drawer_icon.png")}
               />

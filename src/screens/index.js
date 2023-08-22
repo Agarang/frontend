@@ -7,6 +7,8 @@ import Complete from "./Complete";
 import Result from "./Result";
 import ExtraInfo1 from "./ExtraInfo1";
 import ExtraInfo2 from "./ExtraInfo2";
+import ServiceInfo from "./ServiceInfo";
+import Mypage from "./Mypage";
 
 export {
   Landing,
@@ -18,4 +20,6 @@ export {
   Result,
   ExtraInfo1,
   ExtraInfo2,
+  ServiceInfo,
+  Mypage,
 };
