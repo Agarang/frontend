@@ -50,8 +50,6 @@ const ButtonsContainer = styled.View`
 `;
 
 const Landing = ({ navigation }) => {
-  console.log(Width);
-  console.log(typeof Width);
   return (
     <Container>
       <LogoContainer>
