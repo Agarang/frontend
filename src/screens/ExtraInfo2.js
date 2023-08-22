@@ -83,7 +83,8 @@ const ButtonsContainer = styled.SafeAreaView`
   align-items: center;
   background-color: #fff1ef;
 `;
-const ExtraInfo1 = ({ navigation }) => {
+
+const ExtraInfo2 = ({ navigation }) => {
   return (
     <Container>
       <Text>정말 반가워요!</Text>
@@ -92,7 +93,7 @@ const ExtraInfo1 = ({ navigation }) => {
         회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
         있어요
       </StyledText>
-      <StyledText>이름</StyledText>
+      <StyledText>산모의 키</StyledText>
       <StyledInput placeholder="이산모" />
 
       <StyledText>생년월일</StyledText>
@@ -103,16 +104,17 @@ const ExtraInfo1 = ({ navigation }) => {
       <StyledText>닉네임</StyledText>
       <StyledInput placeholder="뭐라고 불러드릴까요?" />
       <StyledText>우리 아이와는 어떤 관계이신가요?</StyledText>
+
       <ButtonsContainer>
         <RetryButton onPress={() => navigation.navigate("main")}>
           <RetryText>건너뛰기</RetryText>
         </RetryButton>
         <MeetButton onPress={() => navigation.navigate("Result")}>
-          <ButtonText>다음</ButtonText>
+          <ButtonText>저장하기</ButtonText>
         </MeetButton>
       </ButtonsContainer>
     </Container>
   );
 };
 
-export default ExtraInfo1;
+export default ExtraInfo2;
