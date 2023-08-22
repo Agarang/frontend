@@ -9,7 +9,7 @@ const Container = styled.SafeAreaView`
   background-color: #fff1ef;
   align-items: center;
   justify-content: center;
-  height: ${Height};
+  height: ${Height}px;
 `;
 
 const StyledText = styled.Text`

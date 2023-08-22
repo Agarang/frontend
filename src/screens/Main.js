@@ -215,11 +215,6 @@ const Main = ({ navigation }) => {
             <DdayText>D-20</DdayText>
           </DdayBackground>
         </SubHeaderContainer>
-        <Button
-          title="로딩페이지로"
-          onPress={() => navigation.navigate("Loading")}
-        />
-
         <PicContainer>
           <ImageBackground
             source={require("../../assets/images/main-pic-container.png")}
@@ -261,7 +256,7 @@ const Main = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
-  picBack: { width: "350px", height: "420px" },
+  picBack: { width: 350, height: 420 },
 });
 
 export default Main;
