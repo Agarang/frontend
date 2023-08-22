@@ -11,9 +11,6 @@ import {
 import styled from "styled-components/native";
 import * as ImagePicker from "expo-image-picker";
 
-const Width = Dimensions.get("window").width;
-const Height = Dimensions.get("window").height;
-
 const MainContainer = styled.View`
   flex: 1;
   align-items: center;
@@ -35,6 +32,7 @@ const MainHeaderContainer = styled.SafeAreaView`
   flex-flow: row nowrap;
   justify-content: space-between;
 `;
+
 const SubHeaderContainer = styled.View`
   display: block;
   width: 100%;
@@ -60,6 +58,7 @@ const DdayText = styled.Text`
 const IconsContainer = styled.SafeAreaView`
   flex-direction: row;
 `;
+
 const LogoText = styled.Text`
   color: #ff7360;
   font-size: 22px;
@@ -116,17 +115,13 @@ const GallaryText = styled.Text`
   font-weight: 800;
   font-size: 18px;
 `;
+
 const PicContainer = styled.View`
   width: 100%;
   height: 60%;
   padding-left: 15px;
   align-items: center;
   justify-content: center;
-`;
-
-const ToAlbumButton = styled.TouchableOpacity`
-  width: 200px;
-  height: 100px;
 `;
 
 //버튼 스타일
@@ -183,6 +178,14 @@ const Main = ({ navigation }) => {
     }
   };
 
+  const handleNavigateToResult = () => {
+    if (selectedImage) {
+      navigation.navigate("Result", { selectedImage });
+    } else {
+      pickImage();
+    }
+  };
+
   return (
     <MainContainer>
       <ImageBackground
@@ -232,7 +235,7 @@ const Main = ({ navigation }) => {
                 }}
               />
             ) : (
-              <ToGalaryContainer onPress={pickImage}>
+              <ToGalaryContainer onPress={handleNavigateToResult}>
                 <GalaryIcon
                   source={require("../../assets/images/galary-icon.png")}
                 />

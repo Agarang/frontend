@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Text, StyleSheet, ImageBackground } from "react-native";
 
@@ -63,6 +63,7 @@ const ButtonsContainer = styled.SafeAreaView`
   align-items: center;
   background-color: #fff1ef;
 `;
+
 const Result = ({ navigation }) => {
   return (
     <Container>
