@@ -26,6 +26,7 @@ const Chat = () => {
       GiftedChat.append(previousMessages, messages)
     );
   }, []);
+
   return (
     <>
       <GiftedChat

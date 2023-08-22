@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import * as ImagePicker from "expo-image-picker";
+import * as axios from "axios";
 
 const MainContainer = styled.View`
   flex: 1;
@@ -146,6 +147,9 @@ const ButtonText = styled.Text`
   font-size: 16px;
 `;
 
+let result;
+let generatedImage;
+
 const Main = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -163,15 +167,15 @@ const Main = ({ navigation }) => {
 
   const pickImage = async () => {
     try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
+      result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
       });
 
       if (!result.canceled) {
-        setSelectedImage(result.uri);
+        setSelectedImage(result.assets.pop()?.uri);
       }
     } catch (error) {
       console.log("Error picking image: ", error);
@@ -245,7 +249,48 @@ const Main = ({ navigation }) => {
               </ToGalaryContainer>
             )}
             {selectedImage ? (
-              <StyledButton onPress={() => navigation.navigate("Loading")}>
+              <StyledButton
+                onPress={async () => {
+                  const body = new FormData();
+
+                  try {
+                    const imageInfo = result?.assets?.pop();
+
+                    console.log(imageInfo);
+                    // const uri = imageInfo?.uri;
+
+                    // const fileName = imageInfo?.fileName;
+
+                    // const ext = fileName?.split(".").slice(-1).toString();
+
+                    // const type = `images/${ext}`;
+
+                    // const fetus = {
+                    //   uri,
+                    //   type,
+                    //   name: fileName,
+                    // };
+
+                    body.append("fetus", imageInfo);
+
+                    const res = await axios.post(
+                      "http://127.0.0.1/api/v1/photo/fetus",
+                      body,
+                      {
+                        headers: {
+                          "content-type": "multipart/form-data",
+                        },
+                      }
+                    );
+                    console.log(res.data);
+                    generatedImage = res.data.data.url;
+                  } catch (error) {
+                    console.log("Images Send Error : ", error);
+                  }
+
+                  return navigation.navigate("Loading");
+                }}
+              >
                 <ButtonText>아가 보러 가기</ButtonText>
               </StyledButton>
             ) : (

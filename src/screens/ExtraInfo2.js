@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions } from "react-native";
+import { Text, Dimensions, StyleSheet } from "react-native";
+import RadioGroup from "react-native-radio-buttons-group";
 
 // const Width = Dimensions.get("window").width;
 // const Height = Dimensions.get("window").height;
@@ -85,6 +86,31 @@ const ButtonsContainer = styled.SafeAreaView`
 `;
 
 const ExtraInfo2 = ({ navigation }) => {
+  const [selectedId, setSelectedId] = useState();
+  const radioButtons = useMemo(
+    () => [
+      {
+        id: "1", // acts as primary key, should be unique and non-empty string
+        color: "#FF7360",
+        label: "여자",
+        value: "1",
+        labelStyle: styles.labelStyle,
+      },
+      {
+        id: "2",
+        color: "#FF7360",
+        label: "남자",
+        value: "2",
+      },
+      {
+        id: "3",
+        color: "#FF7360",
+        label: "아직 몰라요",
+        value: "3",
+      },
+    ],
+    []
+  );
   return (
     <Container>
       <Text>산모님과 쑥쑥이에 대해</Text>
@@ -100,7 +126,13 @@ const ExtraInfo2 = ({ navigation }) => {
       <StyledText>출산 예정일</StyledText>
       <StyledInput placeholder="23.07" />
       <StyledText>성별</StyledText>
-
+      <RadioGroup
+        layout="row"
+        labelStyle={{ color: "blue" }}
+        radioButtons={radioButtons}
+        onPress={setSelectedId}
+        selectedId={selectedId}
+      />
       <ButtonsContainer>
         <RetryButton onPress={() => navigation.navigate("Main")}>
           <RetryText>건너뛰기</RetryText>
@@ -112,5 +144,10 @@ const ExtraInfo2 = ({ navigation }) => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  labelStyle: { color: "#FF7360", fontWeight: 700 },
+  picBack: { width: 350, height: 420 },
+});
 
 export default ExtraInfo2;

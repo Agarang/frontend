@@ -42,7 +42,7 @@ const Mypage = ({ navigation }) => {
           <Text>닉네임 님</Text>
           <Text>쑥쑥이 엄마</Text>
           <Text>우리 아가</Text>
-          <StyledButton onPress={() => navigation.navigate("Result")}>
+          <StyledButton onPress={() => navigation.navigate("ServiceInfo")}>
             <ButtonText>쑥쑥이(태명)</ButtonText>
           </StyledButton>
           <Text>내 정보 관리</Text>

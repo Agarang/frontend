@@ -82,9 +82,6 @@ const ButtonsContainer = styled.SafeAreaView`
   background-color: #fff1ef;
 `;
 const ExtraInfo1 = ({ navigation }) => {
-  const [value, setValue] = useState(null);
-  const [checked, setChecked] = React.useState("first");
-
   const radioButtons = useMemo(
     () => [
       {
