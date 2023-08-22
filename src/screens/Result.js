@@ -88,7 +88,7 @@ const Result = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
-  picBack: { width: 350, height: 420 },
+  picBack: { width: "350px", height: "420px" },
 });
 
 export default Result;

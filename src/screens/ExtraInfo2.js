@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components/native";
 import { Text, Dimensions } from "react-native";
 
-const Width = Dimensions.get("window").width;
-const Height = Dimensions.get("window").height;
+// const Width = Dimensions.get("window").width;
+// const Height = Dimensions.get("window").height;
 
 const Container = styled.SafeAreaView`
   background-color: #fff1ef;
@@ -102,10 +102,10 @@ const ExtraInfo2 = ({ navigation }) => {
       <StyledText>성별</StyledText>
 
       <ButtonsContainer>
-        <RetryButton onPress={() => navigation.navigate("main")}>
+        <RetryButton onPress={() => navigation.navigate("Main")}>
           <RetryText>건너뛰기</RetryText>
         </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("main")}>
+        <MeetButton onPress={() => navigation.navigate("Main")}>
           <ButtonText>저장하기</ButtonText>
         </MeetButton>
       </ButtonsContainer>
