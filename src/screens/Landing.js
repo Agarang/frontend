@@ -61,7 +61,7 @@ const Landing = ({ navigation }) => {
       <StyledInput placeholder="email@email.com" />
       <StyledInput placeholder="******" />
 
-      <StyledButton>
+      <StyledButton onPress={() => navigation.navigate("Main")}>
         <ButtonText>로그인</ButtonText>
       </StyledButton>
       <ButtonsContainer>

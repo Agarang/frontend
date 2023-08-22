@@ -87,29 +87,25 @@ const ButtonsContainer = styled.SafeAreaView`
 const ExtraInfo2 = ({ navigation }) => {
   return (
     <Container>
-      <Text>정말 반가워요!</Text>
-      <Text>회원가입이 완료되었어요!</Text>
-      <StyledText>
-        회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
-        있어요
-      </StyledText>
+      <Text>산모님과 쑥쑥이에 대해</Text>
+      <Text>조금만 더 알려주세요!</Text>
       <StyledText>산모의 키</StyledText>
-      <StyledInput placeholder="이산모" />
+      <StyledInput placeholder="160kg" />
 
-      <StyledText>생년월일</StyledText>
-      <StyledInput placeholder="8자 ex)19800101" />
+      <StyledText>산모의 몸무게</StyledText>
+      <StyledInput placeholder="160cm" />
 
-      <StyledText>우리아이의 태명을 알려주세요.</StyledText>
-      <StyledInput placeholder="우리아이의 태명은 뭔가요?" />
-      <StyledText>닉네임</StyledText>
-      <StyledInput placeholder="뭐라고 불러드릴까요?" />
-      <StyledText>우리 아이와는 어떤 관계이신가요?</StyledText>
+      <StyledText>우리아이가 찾아온 날</StyledText>
+      <StyledInput placeholder="23.08.01" />
+      <StyledText>출산 예정일</StyledText>
+      <StyledInput placeholder="23.07" />
+      <StyledText>성별</StyledText>
 
       <ButtonsContainer>
         <RetryButton onPress={() => navigation.navigate("main")}>
           <RetryText>건너뛰기</RetryText>
         </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("Result")}>
+        <MeetButton onPress={() => navigation.navigate("main")}>
           <ButtonText>저장하기</ButtonText>
         </MeetButton>
       </ButtonsContainer>

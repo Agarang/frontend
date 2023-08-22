@@ -107,7 +107,7 @@ const ExtraInfo1 = ({ navigation }) => {
         <RetryButton onPress={() => navigation.navigate("main")}>
           <RetryText>건너뛰기</RetryText>
         </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("Result")}>
+        <MeetButton onPress={() => navigation.navigate("ExtraInfo2")}>
           <ButtonText>다음</ButtonText>
         </MeetButton>
       </ButtonsContainer>
