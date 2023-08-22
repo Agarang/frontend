@@ -31,7 +31,7 @@ const ButtonText = styled.Text`
   font-size: 17px;
 `;
 
-const Mypage = () => {
+const Mypage = ({ navigation }) => {
   return (
     <MainContainer>
       <ImageBackground
