@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Dimensions,
   Image,
   ImageBackground,
   StyleSheet,
@@ -27,13 +26,19 @@ const Container = styled.SafeAreaView`
 const MainHeaderContainer = styled.SafeAreaView`
   display: block;
   width: 100%;
-  margin: 12px 5px 5px 5px;
+  padding-right: 20px;
+  margin: 30px 5px 5px 5px;
   display: flex;
   flex-direction: row;
-  flex-flow: row nowrap;
   justify-content: space-between;
 `;
 
+const StyledHeaderText = styled.Text`
+  padding-left: 20px;
+  font-size: 18px;
+  margin: 2px;
+  font-weight: 700;
+`;
 const SubHeaderContainer = styled.View`
   display: block;
   width: 100%;
@@ -57,10 +62,14 @@ const DdayText = styled.Text`
 `;
 
 const IconsContainer = styled.SafeAreaView`
+  margin-top: 20px;
+  margin-right: 20px;
   flex-direction: row;
 `;
 
 const LogoText = styled.Text`
+  margin-top: 20px;
+  margin-left: 20px;
   color: #ff7360;
   font-size: 22px;
   font-weight: 700;
@@ -73,12 +82,12 @@ const StyledIcon = styled.Image`
 `;
 
 const ToGalaryContainer = styled.TouchableOpacity`
-  margin-top: 20px;
-  margin-right: 14px;
-  padding-top: 120px;
-  padding-bottom: 120px;
-  padding-right: 60px;
-  padding-left: 60px;
+  margin-top: 26px;
+  margin-right: 17px;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  padding-right: 42px;
+  padding-left: 44px;
   background-color: #fff1ef;
   border-radius: 5px;
   border: 2px dashed #ffc7bf;
@@ -129,8 +138,8 @@ const PicContainer = styled.View`
 const StyledButton = styled.TouchableOpacity`
   margin-right: 17px;
   margin-top: 16px;
-  width: 40%;
-  height: 40px;
+  width: 36%;
+  height: 36px;
   border-radius: 50px;
   background-color: #ff7360;
   border: 3px solid #ff6853;
@@ -144,7 +153,7 @@ const ButtonText = styled.Text`
   justify-content: center;
   margin-top: 8px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 let result;
@@ -192,6 +201,7 @@ const Main = ({ navigation }) => {
 
   return (
     <MainContainer>
+      {/* 전체 배경 화면 */}
       <ImageBackground
         source={require("../../assets/images/bg-img-seperated.png")}
         style={styles.bgImage}
@@ -213,7 +223,11 @@ const Main = ({ navigation }) => {
         </MainHeaderContainer>
 
         <SubHeaderContainer>
-          <Text>쑥쑥이의 엄마님 안녕하세요! {"\n"}쑥쑥이와 대화해요!</Text>
+          <StyledHeaderText>
+            <Text style={{ color: "#FF7360" }}>쑥쑥이</Text>의{" "}
+            <Text style={{ color: "#FF7360" }}>엄마</Text>님 안녕하세요!{"\n"}
+            쑥쑥이와 대화해요!
+          </StyledHeaderText>
 
           <DdayBackground
             source={require("../../assets/images/dday-background.png")}
@@ -222,6 +236,7 @@ const Main = ({ navigation }) => {
             <DdayText>D-20</DdayText>
           </DdayBackground>
         </SubHeaderContainer>
+
         <PicContainer>
           <ImageBackground
             source={require("../../assets/images/main-pic-container.png")}
