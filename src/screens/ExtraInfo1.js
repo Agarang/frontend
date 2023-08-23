@@ -15,6 +15,21 @@ const StyledText = styled.Text`
   width: 70%;
   font-size: 12px;
   color: #4e5256;
+  text-align: center;
+`;
+
+//항목 텍스트
+const ItemText = styled.Text`
+  margin: 10px 5px 5px 5px;
+  width: 70%;
+  font-size: 12px;
+  color: #4e5256;
+`;
+
+const StyledHeaderText = styled.Text`
+  font-size: 20px;
+  margin: 2px;
+  font-weight: 700;
 `;
 
 const StyledInput = styled.TextInput`
@@ -81,11 +96,13 @@ const ButtonsContainer = styled.SafeAreaView`
   align-items: center;
   background-color: #fff1ef;
 `;
+
 const ExtraInfo1 = ({ navigation }) => {
   const radioButtons = useMemo(
     () => [
       {
         id: "1", // acts as primary key, should be unique and non-empty string
+        size: 20,
         color: "#FF7360",
         label: "엄마",
         value: "1",
@@ -93,22 +110,27 @@ const ExtraInfo1 = ({ navigation }) => {
       },
       {
         id: "2",
+        size: 20,
         color: "#FF7360",
         label: "아빠",
         value: "2",
+        labelStyle: styles.labelStyle,
       },
       {
         id: "3",
+        size: 20,
         color: "#FF7360",
         label: "그 외 가족",
         value: "3",
+        labelStyle: styles.labelStyle,
       },
-      {
-        id: "4",
-        color: "#FF7360",
-        label: "지인",
-        value: "4",
-      },
+      // {
+      //   id: "4",
+      //   color: "#FF7360",
+      //   label: "지인",
+      //   value: "4",
+      //   labelStyle: styles.labelStyle,
+      // },
     ],
     []
   );
@@ -121,24 +143,28 @@ const ExtraInfo1 = ({ navigation }) => {
 
   return (
     <Container>
-      <Text>정말 반가워요!</Text>
-      <Text>회원가입이 완료되었어요!</Text>
+      <StyledHeaderText>정말 반가워요!</StyledHeaderText>
+      <StyledHeaderText>
+        <Text style={{ color: "#FF7360" }}>회원가입</Text>이 완료되었어요!
+      </StyledHeaderText>
 
       <StyledText>
         회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
         있어요
       </StyledText>
-      <StyledText>이름</StyledText>
+      <ItemText>이름</ItemText>
       <StyledInput placeholder="이산모" />
 
-      <StyledText>생년월일</StyledText>
+      <ItemText>생년월일</ItemText>
       <StyledInput placeholder="8자 ex)19800101" />
 
-      <StyledText>우리아이의 태명을 알려주세요.</StyledText>
+      <ItemText>우리아이의 태명을 알려주세요.</ItemText>
       <StyledInput placeholder="우리아이의 태명은 뭔가요?" />
-      <StyledText>닉네임</StyledText>
+      <ItemText>닉네임</ItemText>
       <StyledInput placeholder="뭐라고 불러드릴까요?" />
-      <StyledText>우리 아이와는 어떤 관계이신가요?</StyledText>
+      <ItemText style={{ marginTop: 25 }}>
+        우리 아이와는 어떤 관계이신가요?
+      </ItemText>
 
       <RadioGroup
         layout="row"
@@ -160,7 +186,7 @@ const ExtraInfo1 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  labelStyle: { color: "#FF7360", fontWeight: 700 },
+  labelStyle: { fontWeight: 600, color: "#4e5256" },
   picBack: { width: 350, height: 420 },
 });
 

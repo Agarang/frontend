@@ -3,9 +3,6 @@ import styled from "styled-components/native";
 import { Text, Dimensions, StyleSheet } from "react-native";
 import RadioGroup from "react-native-radio-buttons-group";
 
-// const Width = Dimensions.get("window").width;
-// const Height = Dimensions.get("window").height;
-
 const Container = styled.SafeAreaView`
   background-color: #fff1ef;
   align-items: center;
@@ -13,15 +10,31 @@ const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
+const StyledHeaderText = styled.Text`
+  font-size: 20px;
+  margin: 2px;
+  font-weight: 700;
+`;
+
 const StyledText = styled.Text`
-  margin: 10px 5px 5px 5px;
+  margin: 10px 5px 5px 10px;
   width: 70%;
   font-size: 12px;
   color: #4e5256;
 `;
 
-const StyledInput = styled.TextInput`
+const ItemsContainer = styled.View`
   width: 80%;
+  flex-direction: row;
+`;
+
+const ItemContainer = styled.View`
+  width: 50%;
+  margin-top: 30px;
+`;
+
+const StyledInput = styled.TextInput`
+  width: 90%;
   height: 45px;
   margin: 3px;
   padding: 15px;
@@ -91,6 +104,7 @@ const ExtraInfo2 = ({ navigation }) => {
     () => [
       {
         id: "1", // acts as primary key, should be unique and non-empty string
+        size: 20,
         color: "#FF7360",
         label: "여자",
         value: "1",
@@ -98,34 +112,53 @@ const ExtraInfo2 = ({ navigation }) => {
       },
       {
         id: "2",
+        size: 20,
         color: "#FF7360",
         label: "남자",
         value: "2",
+        labelStyle: styles.labelStyle,
       },
       {
         id: "3",
+        size: 20,
         color: "#FF7360",
         label: "아직 몰라요",
         value: "3",
+        labelStyle: styles.labelStyle,
       },
     ],
     []
   );
   return (
     <Container>
-      <Text>산모님과 쑥쑥이에 대해</Text>
-      <Text>조금만 더 알려주세요!</Text>
-      <StyledText>산모의 키</StyledText>
-      <StyledInput placeholder="160kg" />
+      <StyledHeaderText>
+        <Text style={{ color: "#FF7360" }}>산모</Text>님과{" "}
+        <Text style={{ color: "#FF7360" }}>쑥쑥이</Text>에 대해
+      </StyledHeaderText>
+      <StyledHeaderText>조금만 더 알려주세요!</StyledHeaderText>
 
-      <StyledText>산모의 몸무게</StyledText>
-      <StyledInput placeholder="160cm" />
+      <ItemsContainer>
+        <ItemContainer>
+          <StyledText>산모의 키</StyledText>
+          <StyledInput placeholder="160kg" />
+        </ItemContainer>
+        <ItemContainer>
+          <StyledText>산모의 몸무게</StyledText>
+          <StyledInput placeholder="160cm" />
+        </ItemContainer>
+      </ItemsContainer>
 
-      <StyledText>우리아이가 찾아온 날</StyledText>
-      <StyledInput placeholder="23.08.01" />
-      <StyledText>출산 예정일</StyledText>
-      <StyledInput placeholder="23.07" />
-      <StyledText>성별</StyledText>
+      <ItemsContainer>
+        <ItemContainer>
+          <StyledText>우리아이가 찾아온 날</StyledText>
+          <StyledInput placeholder="23.08.01" />
+        </ItemContainer>
+        <ItemContainer>
+          <StyledText>출산 예정일</StyledText>
+          <StyledInput placeholder="23.07" />
+        </ItemContainer>
+      </ItemsContainer>
+      <StyledText style={{ marginTop: 30 }}>성별</StyledText>
       <RadioGroup
         layout="row"
         labelStyle={{ color: "blue" }}
@@ -146,8 +179,12 @@ const ExtraInfo2 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  labelStyle: { color: "#FF7360", fontWeight: 700 },
-  picBack: { width: 350, height: 420 },
+  labelStyle: {
+    fontWeight: 600,
+    color: "#4e5256",
+    justifyContent: "space-evenly",
+  },
+  picBack: { width: 350, height: 420, fontWeight: 600, color: "#4e5256" },
 });
 
 export default ExtraInfo2;
