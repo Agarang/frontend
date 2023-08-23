@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Text, Dimensions, TouchableOpacity } from "react-native";
+import API from "../utils/API";
 
 const Width = Dimensions.get("window").width;
 const Height = Dimensions.get("window").height;
@@ -50,16 +51,57 @@ const ButtonsContainer = styled.View`
 `;
 
 const Landing = ({ navigation }) => {
+  const [emailInput, setEmailInput] = useState("");
+  const [pwInput, setPwInput] = useState("");
+
+  const handleEmailInput = (e) => {
+    setEmailInput(e);
+  };
+
+  const handlePwInput = (e) => {
+    setPwInput(e);
+  };
+
+  const onClick = (e) => {
+    const request = {
+      email: emailInput,
+      password: pwInput,
+    };
+    console.log(emailInput);
+    console.log(pwInput);
+
+    API.post("/api/v1/auth/sign-in", request, {
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        navigation.navigate("Main");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <Container>
       <LogoContainer>
         <Text>Logo</Text>
       </LogoContainer>
 
-      <StyledInput placeholder="email@email.com" />
-      <StyledInput placeholder="******" />
+      <StyledInput
+        type="text"
+        placeholder="email@email.com"
+        onChangeText={handleEmailInput}
+      />
 
-      <StyledButton onPress={() => navigation.navigate("Main")}>
+      <StyledInput
+        secureTextEntry={true}
+        type="password"
+        placeholder="******"
+        onChangeText={handlePwInput}
+      />
+
+      <StyledButton onPress={onClick}>
         <ButtonText>로그인</ButtonText>
       </StyledButton>
       <ButtonsContainer>
