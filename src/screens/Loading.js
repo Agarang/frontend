@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, Button } from "react-native";
 import styled from "styled-components/native";
+import UserContext from "../contexts/User";
+import User from "../components/User";
 
 const Container = styled.SafeAreaView`
   justify-content: center;
@@ -20,6 +22,8 @@ const StateText = styled.Text`
 `;
 
 const Loading = ({ navigation }) => {
+  const myContext = useContext(UserContext);
+
   return (
     <Container>
       <PercentageText>20%</PercentageText>
@@ -29,6 +33,7 @@ const Loading = ({ navigation }) => {
         title="완료페이지로"
         onPress={() => navigation.navigate("Complete")}
       />
+      <Text>{myContext.setting1value}</Text>
     </Container>
   );
 };

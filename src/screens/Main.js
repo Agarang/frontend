@@ -53,7 +53,7 @@ const DdayBackground = styled.ImageBackground`
   width: 150px;
   height: 100px;
   object-fit: cover;
-  padding: 30px 30px 30px 30px;
+  padding: 30px 30px 30px 37px;
 `;
 
 const DdayText = styled.Text`
@@ -233,7 +233,9 @@ const Main = ({ navigation }) => {
             source={require("../../assets/images/dday-background.png")}
           >
             <DdayText>튼튼이와 만날 날</DdayText>
-            <DdayText>D-65</DdayText>
+            <DdayText>
+              D-<Text style={{ fontWeight: 700, fontSize: 35 }}> 65</Text>
+            </DdayText>
           </DdayBackground>
         </SubHeaderContainer>
 
@@ -303,7 +305,7 @@ const Main = ({ navigation }) => {
                     console.log("Images Send Error : ", error);
                   }
 
-                  return navigation.navigate("Loading");
+                  return navigation.navigate("Complete");
                 }}
               >
                 <ButtonText>아가 보러 가기</ButtonText>
