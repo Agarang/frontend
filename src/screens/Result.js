@@ -26,7 +26,7 @@ const PicContainer = styled.View`
 //다시하기 버튼
 const RetryButton = styled.TouchableOpacity`
   margin-top: 50px;
-  width: 35%;
+  width: 37%;
   height: 50px;
   border-radius: 10px;
   background-color: #ffffff;
@@ -62,8 +62,10 @@ const ButtonText = styled.Text`
   font-size: 17px;
 `;
 
+//하단 버튼 2개 컨테이너
 const ButtonsContainer = styled.SafeAreaView`
-  width: 80%;
+  margin-top: 20px;
+  width: 90%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -109,14 +111,33 @@ const MainHeaderContainer = styled.SafeAreaView`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+const HeaderContainer = styled.View`
+  align-items: center;
+  margin-top: 70px;
+  margin-bottom: 12px;
+`;
+
+const CloseBtnContainer = styled.TouchableOpacity`
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 100%;
+  align-items: flex-end;
+`;
 const Result = ({ navigation }) => {
   return (
     <Container>
-      <StyledHeaderText>짜잔! 우리 귀여운</StyledHeaderText>
-      <StyledHeaderText>
-        {" "}
-        <Text style={{ color: "#FF7360" }}>튼튼이</Text>의 사진이에요
-      </StyledHeaderText>
+      <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
+        <StyledIcon
+          source={require("../../assets/images/close-btn-icon.png")}
+        />
+      </CloseBtnContainer>
+      <HeaderContainer>
+        <StyledHeaderText>짜잔! 우리 귀여운</StyledHeaderText>
+        <StyledHeaderText>
+          <Text style={{ color: "#FF7360" }}>튼튼이</Text>의 사진이에요.
+        </StyledHeaderText>
+      </HeaderContainer>
       <PicContainer>
         <ImageBackground
           source={require("../../assets/images/main-pic-container.png")}
@@ -168,7 +189,7 @@ const Result = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
-  picBack: { width: 350, height: 420 },
+  picBack: { width: 350, height: 420, marginLeft: 4 },
 });
 
 export default Result;
