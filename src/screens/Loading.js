@@ -10,7 +10,12 @@ const Container = styled.SafeAreaView`
 `;
 
 const PercentageText = styled.Text`
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: 600;
+`;
+
+const StateText = styled.Text`
+  font-size: 18px;
   font-weight: 600;
 `;
 
@@ -18,8 +23,8 @@ const Loading = ({ navigation }) => {
   return (
     <Container>
       <PercentageText>20%</PercentageText>
-      <Text>우리 아이 사진 생성중...</Text>
-      <Text>(32초 남았어요!)</Text>
+      <StateText>우리 아이 사진 생성중...</StateText>
+      <StateText>(32초 남았어요!)</StateText>
       <Button
         title="완료페이지로"
         onPress={() => navigation.navigate("Complete")}

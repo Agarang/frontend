@@ -9,6 +9,12 @@ const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
+const StyledHeaderText = styled.Text`
+  font-size: 20px;
+  margin: 2px;
+  font-weight: 700;
+`;
+
 const CharacterImg = styled.Image`
   width: 310px;
   height: 310px;
@@ -16,7 +22,7 @@ const CharacterImg = styled.Image`
 `;
 
 const StyledButton = styled.TouchableOpacity`
-  margin-top: 50px;
+  margin-top: 10px;
   width: 80%;
   height: 50px;
   border-radius: 10px;
@@ -33,16 +39,33 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
+const ItemText = styled.Text`
+  margin-top: 150px;
+  font-size: 15px;
+  color: #4e5256;
+`;
+
+const TextContainer = styled.Text`
+  margin-top: 50px;
+  flex-direction: column;
+`;
+
 const Complete = ({ navigation }) => {
   return (
     <Container>
-      <Text>우리 쑥쑥이</Text>
-      <Text>사진이 완성되어 도착했어요!</Text>
+      <StyledHeaderText>
+        우리 <Text style={{ color: "#FF7360" }}>튼튼이</Text>의
+      </StyledHeaderText>
+      <StyledHeaderText>사진이 완성되어 도착했어요!</StyledHeaderText>
       <CharacterImg
         source={require("../../assets/images/character-complete-img.png")}
       />
 
-      <Text>자, 이제 우리 쑥쑥이를 만나러 가보실까요?</Text>
+      <ItemText>
+        자, 이제 우리{" "}
+        <Text style={{ color: "#FF7360", fontWeight: 600 }}>튼튼이</Text>를
+        만나러 가보실까요?
+      </ItemText>
 
       <StyledButton onPress={() => navigation.navigate("Result")}>
         <ButtonText>우리 아가 만나러 가기</ButtonText>

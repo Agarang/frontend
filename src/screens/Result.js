@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Text, StyleSheet, ImageBackground } from "react-native";
+import { Text, StyleSheet, ImageBackground, Image, View } from "react-native";
 
 const Container = styled.SafeAreaView`
   justify-content: center;
   align-items: center;
   background-color: #fff1ef;
   flex: 1;
+`;
+
+const StyledHeaderText = styled.Text`
+  font-size: 21px;
+  margin: 2px;
+  font-weight: 700;
 `;
 
 const PicContainer = styled.View`
@@ -64,16 +70,89 @@ const ButtonsContainer = styled.SafeAreaView`
   background-color: #fff1ef;
 `;
 
+const IconsContainer = styled.SafeAreaView`
+  margin-right: 28px;
+  flex-direction: row;
+`;
+
+const IconContainer = styled.TouchableOpacity`
+  margin: 0 4px;
+`;
+
+const StyledIcon = styled.Image`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+const CheckboxIcon = styled.Image`
+  margin-top: 4px;
+  margin-left: 15px;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+`;
+
+const ItemText = styled.Text`
+  margin-top: 5px;
+  margin-left: 7px;
+  font-size: 17px;
+  color: #4e5256;
+  font-weight: 500;
+`;
+
+const MainHeaderContainer = styled.SafeAreaView`
+  display: block;
+  width: 95%;
+  margin: 25px 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 const Result = ({ navigation }) => {
   return (
     <Container>
-      <Text>짜잔! 우리 귀여운</Text>
-      <Text>쑥쑥이의 사진이에요</Text>
+      <StyledHeaderText>짜잔! 우리 귀여운</StyledHeaderText>
+      <StyledHeaderText>
+        {" "}
+        <Text style={{ color: "#FF7360" }}>튼튼이</Text>의 사진이에요
+      </StyledHeaderText>
       <PicContainer>
         <ImageBackground
           source={require("../../assets/images/main-pic-container.png")}
           style={styles.picBack}
-        ></ImageBackground>
+        >
+          <Image
+            source={require("../../assets/images/interview-after-img.png")}
+            style={{
+              width: 300,
+              height: 300,
+              borderRadius: 5,
+              marginTop: 23,
+              marginLeft: 16,
+            }}
+          />
+          <MainHeaderContainer>
+            <View style={{ flexDirection: "row" }}>
+              <CheckboxIcon
+                source={require("../../assets/images/checkbox-icon-checked.png")}
+              />
+              <ItemText>아기 프로필 설정하기</ItemText>
+            </View>
+            <IconsContainer>
+              <IconContainer>
+                <StyledIcon
+                  source={require("../../assets/images/download-icon.png")}
+                />
+              </IconContainer>
+              <IconContainer onPress={() => navigation.navigate("Mypage")}>
+                <StyledIcon
+                  source={require("../../assets/images/share-icon.png")}
+                />
+              </IconContainer>
+            </IconsContainer>
+          </MainHeaderContainer>
+        </ImageBackground>
       </PicContainer>
       <ButtonsContainer>
         <RetryButton onPress={() => navigation.navigate("main")}>

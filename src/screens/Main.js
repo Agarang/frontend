@@ -50,14 +50,14 @@ const SubHeaderContainer = styled.View`
 `;
 
 const DdayBackground = styled.ImageBackground`
-  width: 130px;
+  width: 150px;
   height: 100px;
   object-fit: cover;
-  padding: 30px;
+  padding: 30px 30px 30px 30px;
 `;
 
 const DdayText = styled.Text`
-  font-size: 12px;
+  font-size: 15px;
   color: white;
 `;
 
@@ -67,6 +67,10 @@ const IconsContainer = styled.SafeAreaView`
   flex-direction: row;
 `;
 
+const IconContainer = styled.TouchableOpacity`
+  margin-left: 3px;
+  margin-right: 2px;
+`;
 const LogoText = styled.Text`
   margin-top: 20px;
   margin-left: 20px;
@@ -93,11 +97,7 @@ const ToGalaryContainer = styled.TouchableOpacity`
   border: 2px dashed #ffc7bf;
   align-self: center;
   justify-content: center;
-`;
-
-const IconContainer = styled.TouchableOpacity`
-  margin-left: 3px;
-  margin-right: 2px;
+  text-align: center;
 `;
 
 const UploadContainer = styled.View`
@@ -224,7 +224,7 @@ const Main = ({ navigation }) => {
 
         <SubHeaderContainer>
           <StyledHeaderText>
-            <Text style={{ color: "#FF7360" }}>쑥쑥이</Text>의{" "}
+            <Text style={{ color: "#FF7360" }}>튼튼이</Text>의{" "}
             <Text style={{ color: "#FF7360" }}>엄마</Text>님 안녕하세요!{"\n"}
             쑥쑥이와 대화해요!
           </StyledHeaderText>
@@ -232,8 +232,8 @@ const Main = ({ navigation }) => {
           <DdayBackground
             source={require("../../assets/images/dday-background.png")}
           >
-            <DdayText>쑥쑥이와 만날 날</DdayText>
-            <DdayText>D-20</DdayText>
+            <DdayText>튼튼이와 만날 날</DdayText>
+            <DdayText>D-65</DdayText>
           </DdayBackground>
         </SubHeaderContainer>
 
@@ -315,6 +315,7 @@ const Main = ({ navigation }) => {
             )}
           </ImageBackground>
         </PicContainer>
+
         <IconContainer onPress={() => navigation.navigate("Chat")}>
           <ChatIcon source={require("../../assets/images/chat_icon.png")} />
         </IconContainer>

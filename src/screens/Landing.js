@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions, TouchableOpacity } from "react-native";
+import { Text, Dimensions, TouchableOpacity, Alert } from "react-native";
 import API from "../utils/API";
 
 const Width = Dimensions.get("window").width;
@@ -80,7 +80,10 @@ const Landing = ({ navigation }) => {
         console.log(res);
         navigation.navigate("Main");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        Alert.alert("아이디와 비밀번호를 확인해주세요");
+      });
   };
   return (
     <Container>
