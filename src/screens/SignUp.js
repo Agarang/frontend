@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions, Image } from "react-native";
-
+import { Dimensions, Image } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 const Height = Dimensions.get("window").height;
 
 const Container = styled.SafeAreaView`
@@ -82,31 +82,33 @@ const HeaderText = styled.Text`
 
 const SignUp = ({ navigation }) => {
   return (
-    <Container>
-      <MainHeaderContainer>
-        <HeaderText>회원가입</HeaderText>
-        <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
-          <StyledIcon
-            source={require("../../assets/images/close-btn-icon.png")}
-          />
-        </CloseBtnContainer>
-      </MainHeaderContainer>
-      <Image source={require("../../assets/images/line-img.png")} />
-      <>
-        <FirstText>이메일주소</FirstText>
-        <StyledInput placeholder="email@email.com" />
+    <KeyboardAwareScrollView>
+      <Container>
+        <MainHeaderContainer>
+          <HeaderText>회원가입</HeaderText>
+          <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
+            <StyledIcon
+              source={require("../../assets/images/close-btn-icon.png")}
+            />
+          </CloseBtnContainer>
+        </MainHeaderContainer>
+        <Image source={require("../../assets/images/line-img.png")} />
+        <>
+          <FirstText>이메일주소</FirstText>
+          <StyledInput placeholder="email@email.com" />
 
-        <StyledText>휴대폰 번호</StyledText>
-        <StyledInput placeholder="010-1234-5678" />
+          <StyledText>휴대폰 번호</StyledText>
+          <StyledInput placeholder="010-1234-5678" />
 
-        <StyledText>비밀번호</StyledText>
-        <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
-        <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
-        <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
-          <ButtonText>완료</ButtonText>
-        </StyledButton>
-      </>
-    </Container>
+          <StyledText>비밀번호</StyledText>
+          <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
+          <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
+          <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
+            <ButtonText>완료</ButtonText>
+          </StyledButton>
+        </>
+      </Container>
+    </KeyboardAwareScrollView>
   );
 };
 
