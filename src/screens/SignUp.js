@@ -86,7 +86,7 @@ const SignUp = ({ navigation }) => {
       <Container>
         <MainHeaderContainer>
           <HeaderText>회원가입</HeaderText>
-          <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
+          <CloseBtnContainer onPress={() => navigation.navigate("Landing")}>
             <StyledIcon
               source={require("../../assets/images/close-btn-icon.png")}
             />
