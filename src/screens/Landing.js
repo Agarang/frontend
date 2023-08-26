@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Text, Dimensions, TouchableOpacity, Alert } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import API from "../utils/API";
 
 const Width = Dimensions.get("window").width;
@@ -91,41 +92,43 @@ const Landing = ({ navigation }) => {
       });
   };
   return (
-    <Container>
-      <LogoContainer>
-        <StyledIcon source={require("../../assets/images/main-logo.png")} />
-      </LogoContainer>
+    <KeyboardAwareScrollView>
+      <Container>
+        <LogoContainer>
+          <StyledIcon source={require("../../assets/images/main-logo.png")} />
+        </LogoContainer>
 
-      <StyledInput
-        type="text"
-        placeholder="email@email.com"
-        onChangeText={handleEmailInput}
-      ></StyledInput>
+        <StyledInput
+          type="text"
+          placeholder="email@email.com"
+          onChangeText={handleEmailInput}
+        ></StyledInput>
 
-      <StyledInput
-        secureTextEntry={true}
-        type="password"
-        placeholder="******"
-        onChangeText={handlePwInput}
-      />
+        <StyledInput
+          secureTextEntry={true}
+          type="password"
+          placeholder="******"
+          onChangeText={handlePwInput}
+        />
 
-      <StyledButton onPress={onClick}>
-        <ButtonText>로그인</ButtonText>
-      </StyledButton>
-      <ButtonsContainer>
-        <TouchableOpacity>
-          <Text>아이디 찾기 </Text>
-        </TouchableOpacity>
-        <Text> / </Text>
-        <TouchableOpacity>
-          <Text> 비밀번호 찾기 </Text>
-        </TouchableOpacity>
-        <Text> / </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <Text> 회원가입</Text>
-        </TouchableOpacity>
-      </ButtonsContainer>
-    </Container>
+        <StyledButton onPress={onClick}>
+          <ButtonText>로그인</ButtonText>
+        </StyledButton>
+        <ButtonsContainer>
+          <TouchableOpacity>
+            <Text>아이디 찾기 </Text>
+          </TouchableOpacity>
+          <Text> / </Text>
+          <TouchableOpacity>
+            <Text> 비밀번호 찾기 </Text>
+          </TouchableOpacity>
+          <Text> / </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+            <Text> 회원가입</Text>
+          </TouchableOpacity>
+        </ButtonsContainer>
+      </Container>
+    </KeyboardAwareScrollView>
   );
 };
 
