@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions } from "react-native";
+import { Text, Dimensions, Image } from "react-native";
 
 const Height = Dimensions.get("window").height;
 
@@ -18,6 +18,13 @@ const StyledText = styled.Text`
   color: #4e5256;
 `;
 
+const FirstText = styled.Text`
+  margin: 30px 5px 5px 5px;
+  width: 70%;
+  font-size: 12px;
+  color: #4e5256;
+`;
+
 const StyledInput = styled.TextInput`
   width: 80%;
   height: 45px;
@@ -29,7 +36,7 @@ const StyledInput = styled.TextInput`
 `;
 
 const StyledButton = styled.TouchableOpacity`
-  margin-top: 350px;
+  margin-top: 300px;
   width: 80%;
   height: 50px;
   border-radius: 10px;
@@ -46,21 +53,59 @@ const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
+const CloseBtnContainer = styled.TouchableOpacity`
+  margin-right: 10px;
+  align-items: flex-end;
+`;
+
+const StyledIcon = styled.Image`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+const MainHeaderContainer = styled.SafeAreaView`
+  display: block;
+  width: 100%;
+  padding-right: 20px;
+  margin: 10px 5px 30px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const HeaderText = styled.Text`
+  align-self: center;
+  margin-left: 44%;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
 const SignUp = ({ navigation }) => {
   return (
     <Container>
-      <StyledText>이메일주소</StyledText>
-      <StyledInput placeholder="email@email.com" />
+      <MainHeaderContainer>
+        <HeaderText>회원가입</HeaderText>
+        <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
+          <StyledIcon
+            source={require("../../assets/images/close-btn-icon.png")}
+          />
+        </CloseBtnContainer>
+      </MainHeaderContainer>
+      <Image source={require("../../assets/images/line-img.png")} />
+      <>
+        <FirstText>이메일주소</FirstText>
+        <StyledInput placeholder="email@email.com" />
 
-      <StyledText>휴대폰 번호</StyledText>
-      <StyledInput placeholder="010-1234-5678" />
+        <StyledText>휴대폰 번호</StyledText>
+        <StyledInput placeholder="010-1234-5678" />
 
-      <StyledText>비밀번호</StyledText>
-      <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
-      <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
-      <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
-        <ButtonText>완료</ButtonText>
-      </StyledButton>
+        <StyledText>비밀번호</StyledText>
+        <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
+        <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
+        <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
+          <ButtonText>완료</ButtonText>
+        </StyledButton>
+      </>
     </Container>
   );
 };
