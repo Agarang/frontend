@@ -133,7 +133,7 @@ const ExtraInfo2 = ({ navigation }) => {
     <Container>
       <StyledHeaderText>
         <Text style={{ color: "#FF7360" }}>산모</Text>님과{" "}
-        <Text style={{ color: "#FF7360" }}>쑥쑥이</Text>에 대해
+        <Text style={{ color: "#FF7360" }}>콩닥이</Text>에 대해
       </StyledHeaderText>
       <StyledHeaderText>조금만 더 알려주세요!</StyledHeaderText>
 

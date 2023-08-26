@@ -39,6 +39,7 @@ const StyledHeaderText = styled.Text`
   margin: 2px;
   font-weight: 700;
 `;
+
 const SubHeaderContainer = styled.View`
   display: block;
   width: 100%;
@@ -71,6 +72,7 @@ const IconContainer = styled.TouchableOpacity`
   margin-left: 3px;
   margin-right: 2px;
 `;
+
 const LogoText = styled.Text`
   margin-top: 20px;
   margin-left: 20px;
@@ -81,6 +83,14 @@ const LogoText = styled.Text`
 
 const StyledIcon = styled.Image`
   width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+const LogoIcon = styled.Image`
+  margin-top: 17px;
+  margin-left: 17px;
+  width: 140px;
   height: 30px;
   object-fit: contain;
 `;
@@ -156,6 +166,7 @@ const ButtonText = styled.Text`
   font-size: 15px;
 `;
 
+const NavContainer = styled.View``;
 let result;
 let generatedImage;
 
@@ -207,7 +218,7 @@ const Main = ({ navigation }) => {
         style={styles.bgImage}
       >
         <MainHeaderContainer>
-          <LogoText>Service Logo</LogoText>
+          <LogoIcon source={require("../../assets/images/top-logo-icon.png")} />
           <IconsContainer>
             <IconContainer>
               <StyledIcon
@@ -224,21 +235,24 @@ const Main = ({ navigation }) => {
 
         <SubHeaderContainer>
           <StyledHeaderText>
-            <Text style={{ color: "#FF7360" }}>튼튼이</Text>의{" "}
+            <Text style={{ color: "#FF7360" }}>콩닥이</Text>의{" "}
             <Text style={{ color: "#FF7360" }}>엄마</Text>님 안녕하세요!{"\n"}
-            쑥쑥이와 대화해요!
+            콩닥이와 대화해요!
           </StyledHeaderText>
 
           <DdayBackground
             source={require("../../assets/images/dday-background.png")}
           >
-            <DdayText>튼튼이와 만날 날</DdayText>
+            <DdayText>콩닥이와 만날 날</DdayText>
             <DdayText>
-              D-<Text style={{ fontWeight: 700, fontSize: 35 }}> 65</Text>
+              D-<Text style={{ fontWeight: 700, fontSize: 35 }}> 28</Text>
             </DdayText>
           </DdayBackground>
         </SubHeaderContainer>
-
+        <ImageBackground
+          source={require("../../assets/images/day-container-img.png")}
+          style={styles.dayImage}
+        ></ImageBackground>
         <PicContainer>
           <ImageBackground
             source={require("../../assets/images/main-pic-container.png")}
@@ -329,6 +343,7 @@ const Main = ({ navigation }) => {
 const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
   picBack: { width: 350, height: 420 },
+  dayImage: { width: 400, height: 100 },
 });
 
 export default Main;

@@ -135,7 +135,7 @@ const Result = ({ navigation }) => {
       <HeaderContainer>
         <StyledHeaderText>짜잔! 우리 귀여운</StyledHeaderText>
         <StyledHeaderText>
-          <Text style={{ color: "#FF7360" }}>튼튼이</Text>의 사진이에요.
+          <Text style={{ color: "#FF7360" }}>콩닥이</Text>의 사진이에요.
         </StyledHeaderText>
       </HeaderContainer>
       <PicContainer>

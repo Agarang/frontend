@@ -13,8 +13,13 @@ const Container = styled.SafeAreaView`
   height: ${Height}px;
 `;
 
+const StyledIcon = styled.Image`
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+`;
 const LogoContainer = styled.SafeAreaView`
-  margin-bottom: 110px;
+  margin-bottom: 70px;
 `;
 
 const StyledInput = styled.TextInput`
@@ -88,14 +93,14 @@ const Landing = ({ navigation }) => {
   return (
     <Container>
       <LogoContainer>
-        <Text>Logo</Text>
+        <StyledIcon source={require("../../assets/images/main-logo.png")} />
       </LogoContainer>
 
       <StyledInput
         type="text"
         placeholder="email@email.com"
         onChangeText={handleEmailInput}
-      />
+      ></StyledInput>
 
       <StyledInput
         secureTextEntry={true}

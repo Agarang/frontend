@@ -54,7 +54,7 @@ const Complete = ({ navigation }) => {
   return (
     <Container>
       <StyledHeaderText>
-        우리 <Text style={{ color: "#FF7360" }}>튼튼이</Text>의
+        우리 <Text style={{ color: "#FF7360" }}>콩닥이</Text>의
       </StyledHeaderText>
       <StyledHeaderText>사진이 완성되어 도착했어요!</StyledHeaderText>
       <CharacterImg
@@ -63,7 +63,7 @@ const Complete = ({ navigation }) => {
 
       <ItemText>
         자, 이제 우리{" "}
-        <Text style={{ color: "#FF7360", fontWeight: 600 }}>튼튼이</Text>를
+        <Text style={{ color: "#FF7360", fontWeight: 600 }}>콩닥이</Text>를
         만나러 가보실까요?
       </ItemText>
 
