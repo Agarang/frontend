@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions, Alert, View, StyleSheet } from "react-native";
+import { Text, Image, StyleSheet, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import RadioGroup from "react-native-radio-buttons-group";
 
 const Container = styled.SafeAreaView`
@@ -53,8 +54,8 @@ const StyledButton = styled.TouchableOpacity`
 
 const RetryButton = styled.TouchableOpacity`
   margin-top: 50px;
-  width: 35%;
-  height: 50px;
+  width: 37%;
+  height: 55px;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1.5px solid #ffc7bf;
@@ -63,7 +64,7 @@ const RetryButton = styled.TouchableOpacity`
 const MeetButton = styled.TouchableOpacity`
   margin-top: 50px;
   width: 60%;
-  height: 50px;
+  height: 55px;
   border-radius: 10px;
   background-color: #ff7360;
   border: 1.5px solid #ff6853;
@@ -90,13 +91,51 @@ const ButtonText = styled.Text`
 `;
 
 const ButtonsContainer = styled.SafeAreaView`
-  width: 80%;
+  width: 85%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: #fff1ef;
 `;
 
+const MainHeaderContainer = styled.SafeAreaView`
+  display: block;
+  width: 100%;
+  padding-right: 20px;
+  margin: 30px 5px 30px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const HeaderText = styled.Text`
+  align-self: center;
+  margin-left: 40%;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
+const CloseBtnContainer = styled.TouchableOpacity`
+  margin-right: 10px;
+  align-items: flex-end;
+`;
+
+const StyledIcon = styled.Image`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+const HeaderView = styled.View`
+  align-items: center;
+  margin-top: 5px;
+`;
+
+const PregressBarContainer = styled.Image`
+  width: 95px;
+  height: 75px;
+  object-fit: contain;
+`;
 const ExtraInfo1 = ({ navigation }) => {
   const radioButtons = useMemo(
     () => [
@@ -124,13 +163,6 @@ const ExtraInfo1 = ({ navigation }) => {
         value: "3",
         labelStyle: styles.labelStyle,
       },
-      // {
-      //   id: "4",
-      //   color: "#FF7360",
-      //   label: "지인",
-      //   value: "4",
-      //   labelStyle: styles.labelStyle,
-      // },
     ],
     []
   );
@@ -142,46 +174,64 @@ const ExtraInfo1 = ({ navigation }) => {
   };
 
   return (
-    <Container>
-      <StyledHeaderText>정말 반가워요!</StyledHeaderText>
-      <StyledHeaderText>
-        <Text style={{ color: "#FF7360" }}>회원가입</Text>이 완료되었어요!
-      </StyledHeaderText>
+    <KeyboardAwareScrollView style={{ backgroundColor: "#fff1ef" }}>
+      <Container>
+        <MainHeaderContainer>
+          <HeaderText>추가정보 입력</HeaderText>
+          <CloseBtnContainer onPress={() => navigation.navigate("Landing")}>
+            <StyledIcon
+              source={require("../../assets/images/close-btn-icon.png")}
+            />
+          </CloseBtnContainer>
+        </MainHeaderContainer>
+        <Image source={require("../../assets/images/line-img.png")} />
 
-      <StyledText>
-        회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를 할 수
-        있어요
-      </StyledText>
-      <ItemText>이름</ItemText>
-      <StyledInput placeholder="이산모" />
+        <HeaderView>
+          <PregressBarContainer
+            source={require("../../assets/images/progressbar2-img.png")}
+          />
 
-      <ItemText>생년월일</ItemText>
-      <StyledInput placeholder="8자 ex)19800101" />
+          <StyledHeaderText>정말 반가워요!</StyledHeaderText>
+          <StyledHeaderText>
+            <Text style={{ color: "#FF7360" }}>회원가입</Text>이 완료되었어요!
+          </StyledHeaderText>
 
-      <ItemText>우리아이의 태명을 알려주세요.</ItemText>
-      <StyledInput placeholder="우리아이의 태명은 뭔가요?" />
-      <ItemText>닉네임</ItemText>
-      <StyledInput placeholder="뭐라고 불러드릴까요?" />
-      <ItemText style={{ marginTop: 25 }}>
-        우리 아이와는 어떤 관계이신가요?
-      </ItemText>
+          <StyledText>
+            회원님과 아이에 대해 조금만 더 알려주시면{"\n"}좀 더 원활한 대화를
+            할 수 있어요
+          </StyledText>
+        </HeaderView>
+        <ItemText>이름</ItemText>
+        <StyledInput placeholder="이산모" />
 
-      <RadioGroup
-        layout="row"
-        labelStyle={{ color: "blue" }}
-        radioButtons={radioButtons}
-        onPress={setSelectedId}
-        selectedId={selectedId}
-      />
-      <ButtonsContainer>
-        <RetryButton onPress={() => navigation.navigate("main")}>
-          <RetryText>건너뛰기</RetryText>
-        </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("ExtraInfo2")}>
-          <ButtonText>다음</ButtonText>
-        </MeetButton>
-      </ButtonsContainer>
-    </Container>
+        <ItemText>생년월일</ItemText>
+        <StyledInput placeholder="8자 ex)19800101" />
+
+        <ItemText>우리아이의 태명을 알려주세요.</ItemText>
+        <StyledInput placeholder="우리아이의 태명은 뭔가요?" />
+        <ItemText>닉네임</ItemText>
+        <StyledInput placeholder="뭐라고 불러드릴까요?" />
+        <ItemText style={{ marginTop: 25 }}>
+          우리 아이와는 어떤 관계이신가요?
+        </ItemText>
+
+        <RadioGroup
+          layout="row"
+          labelStyle={{ color: "blue" }}
+          radioButtons={radioButtons}
+          onPress={setSelectedId}
+          selectedId={selectedId}
+        />
+        <ButtonsContainer>
+          <RetryButton onPress={() => navigation.navigate("main")}>
+            <RetryText>건너뛰기</RetryText>
+          </RetryButton>
+          <MeetButton onPress={() => navigation.navigate("ExtraInfo2")}>
+            <ButtonText>다음</ButtonText>
+          </MeetButton>
+        </ButtonsContainer>
+      </Container>
+    </KeyboardAwareScrollView>
   );
 };
 
