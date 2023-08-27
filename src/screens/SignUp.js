@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Dimensions, Image } from "react-native";
+import { Dimensions, Image, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import API from "../utils/API";
 const Height = Dimensions.get("window").height;
 
 const Container = styled.SafeAreaView`
@@ -81,6 +82,51 @@ const HeaderText = styled.Text`
 `;
 
 const SignUp = ({ navigation }) => {
+  const [emailInput, setEmailInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [pwInput, setPwInput] = useState("");
+  const [confirmPwInput, setConfirmPwInput] = useState("");
+
+  const handleEmailInput = (e) => {
+    setEmailInput(e);
+  };
+
+  const handlePhoneInput = (e) => {
+    setPhoneInput(e);
+  };
+
+  const handlePwInput = (e) => {
+    setPwInput(e);
+  };
+
+  const handleConfirmPwInput = (e) => {
+    setConfirmPwInput(e);
+  };
+
+  const onClick = (e) => {
+    const request = {
+      email: emailInput,
+      phoneNumber: phoneInput,
+      password: pwInput,
+    };
+
+    API.post("/api/v1/user/sign-up", request, {
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        navigation.navigate("ExtraInfo1");
+      })
+      .catch((error) => {
+        setPwInput("");
+        setConfirmPwInput("");
+        console.log(error);
+        Alert.alert("비밀번호를 확인해주세요");
+      });
+  };
   return (
     <KeyboardAwareScrollView>
       <Container>
@@ -95,15 +141,37 @@ const SignUp = ({ navigation }) => {
         <Image source={require("../../assets/images/line-img.png")} />
         <>
           <FirstText>이메일주소</FirstText>
-          <StyledInput placeholder="email@email.com" />
+          <StyledInput
+            type="text"
+            placeholder="email@email.com"
+            value={emailInput}
+            onChangeText={handleEmailInput}
+          />
 
           <StyledText>휴대폰 번호</StyledText>
-          <StyledInput placeholder="010-1234-5678" />
+          <StyledInput
+            type="text"
+            placeholder="010-1234-5678"
+            onChangeText={handlePhoneInput}
+            value={phoneInput}
+          />
 
           <StyledText>비밀번호</StyledText>
-          <StyledInput placeholder="영문/숫자/특수문자 혼합 8~20자" />
-          <StyledInput placeholder="비밀번호를 한 번 더 입력해주세요" />
-          <StyledButton onPress={() => navigation.navigate("ExtraInfo1")}>
+          <StyledInput
+            secureTextEntry={true}
+            type="password"
+            placeholder="영문/숫자/특수문자 혼합 8~20자"
+            value={pwInput}
+            onChangeText={handlePwInput}
+          />
+          <StyledInput
+            secureTextEntry={true}
+            type="password"
+            placeholder="비밀번호를 한 번 더 입력해주세요"
+            value={confirmPwInput}
+            onChangeText={handleConfirmPwInput}
+          />
+          <StyledButton onPress={onClick}>
             <ButtonText>완료</ButtonText>
           </StyledButton>
         </>
