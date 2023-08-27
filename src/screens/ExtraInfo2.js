@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components/native";
-import { Text, Dimensions, StyleSheet } from "react-native";
+import { Text, Image, StyleSheet } from "react-native";
 import RadioGroup from "react-native-radio-buttons-group";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Container = styled.SafeAreaView`
   background-color: #fff1ef;
@@ -54,8 +55,8 @@ const StyledButton = styled.TouchableOpacity`
 
 const RetryButton = styled.TouchableOpacity`
   margin-top: 50px;
-  width: 35%;
-  height: 50px;
+  width: 37%;
+  height: 55px;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1.5px solid #ffc7bf;
@@ -64,7 +65,7 @@ const RetryButton = styled.TouchableOpacity`
 const MeetButton = styled.TouchableOpacity`
   margin-top: 50px;
   width: 60%;
-  height: 50px;
+  height: 55px;
   border-radius: 10px;
   background-color: #ff7360;
   border: 1.5px solid #ff6853;
@@ -91,13 +92,46 @@ const ButtonText = styled.Text`
 `;
 
 const ButtonsContainer = styled.SafeAreaView`
-  width: 80%;
+  width: 85%;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 130px;
   background-color: #fff1ef;
 `;
 
+const MainHeaderContainer = styled.SafeAreaView`
+  display: block;
+  width: 100%;
+  padding-right: 20px;
+  margin: 30px 5px 30px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const HeaderText = styled.Text`
+  align-self: center;
+  margin-left: 40%;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
+const CloseBtnContainer = styled.TouchableOpacity`
+  margin-right: 10px;
+  align-items: flex-end;
+`;
+
+const StyledIcon = styled.Image`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+const PregressBarContainer = styled.Image`
+  width: 95px;
+  height: 75px;
+  object-fit: contain;
+`;
 const ExtraInfo2 = ({ navigation }) => {
   const [selectedId, setSelectedId] = useState();
   const radioButtons = useMemo(
@@ -130,51 +164,67 @@ const ExtraInfo2 = ({ navigation }) => {
     []
   );
   return (
-    <Container>
-      <StyledHeaderText>
-        <Text style={{ color: "#FF7360" }}>산모</Text>님과{" "}
-        <Text style={{ color: "#FF7360" }}>콩닥이</Text>에 대해
-      </StyledHeaderText>
-      <StyledHeaderText>조금만 더 알려주세요!</StyledHeaderText>
+    <KeyboardAwareScrollView style={{ backgroundColor: "#fff1ef" }}>
+      <Container>
+        <MainHeaderContainer>
+          <HeaderText>추가정보 입력</HeaderText>
+          <CloseBtnContainer onPress={() => navigation.navigate("Landing")}>
+            <StyledIcon
+              source={require("../../assets/images/close-btn-icon.png")}
+            />
+          </CloseBtnContainer>
+        </MainHeaderContainer>
 
-      <ItemsContainer>
-        <ItemContainer>
-          <StyledText>산모의 키</StyledText>
-          <StyledInput placeholder="160kg" />
-        </ItemContainer>
-        <ItemContainer>
-          <StyledText>산모의 몸무게</StyledText>
-          <StyledInput placeholder="160cm" />
-        </ItemContainer>
-      </ItemsContainer>
+        <Image source={require("../../assets/images/line-img.png")} />
 
-      <ItemsContainer>
-        <ItemContainer>
-          <StyledText>우리아이가 찾아온 날</StyledText>
-          <StyledInput placeholder="23.08.01" />
-        </ItemContainer>
-        <ItemContainer>
-          <StyledText>출산 예정일</StyledText>
-          <StyledInput placeholder="23.07" />
-        </ItemContainer>
-      </ItemsContainer>
-      <StyledText style={{ marginTop: 30 }}>성별</StyledText>
-      <RadioGroup
-        layout="row"
-        labelStyle={{ color: "blue" }}
-        radioButtons={radioButtons}
-        onPress={setSelectedId}
-        selectedId={selectedId}
-      />
-      <ButtonsContainer>
-        <RetryButton onPress={() => navigation.navigate("Main")}>
-          <RetryText>건너뛰기</RetryText>
-        </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("Main")}>
-          <ButtonText>저장하기</ButtonText>
-        </MeetButton>
-      </ButtonsContainer>
-    </Container>
+        <PregressBarContainer
+          source={require("../../assets/images/progressbar3-img.png")}
+        />
+        <StyledHeaderText>
+          <Text style={{ color: "#FF7360" }}>산모</Text>님과{" "}
+          <Text style={{ color: "#FF7360" }}>콩닥이</Text>에 대해
+        </StyledHeaderText>
+        <StyledHeaderText>조금만 더 알려주세요!</StyledHeaderText>
+
+        <ItemsContainer>
+          <ItemContainer>
+            <StyledText>산모의 키</StyledText>
+            <StyledInput placeholder="160kg" />
+          </ItemContainer>
+          <ItemContainer>
+            <StyledText>산모의 몸무게</StyledText>
+            <StyledInput placeholder="160cm" />
+          </ItemContainer>
+        </ItemsContainer>
+
+        <ItemsContainer>
+          <ItemContainer>
+            <StyledText>우리아이가 찾아온 날</StyledText>
+            <StyledInput placeholder="23.08.01" />
+          </ItemContainer>
+          <ItemContainer>
+            <StyledText>출산 예정일</StyledText>
+            <StyledInput placeholder="23.07" />
+          </ItemContainer>
+        </ItemsContainer>
+        <StyledText style={{ marginTop: 30 }}>성별</StyledText>
+        <RadioGroup
+          layout="row"
+          labelStyle={{ color: "blue" }}
+          radioButtons={radioButtons}
+          onPress={setSelectedId}
+          selectedId={selectedId}
+        />
+        <ButtonsContainer>
+          <RetryButton onPress={() => navigation.navigate("Main")}>
+            <RetryText>건너뛰기</RetryText>
+          </RetryButton>
+          <MeetButton onPress={() => navigation.navigate("Main")}>
+            <ButtonText>저장하기</ButtonText>
+          </MeetButton>
+        </ButtonsContainer>
+      </Container>
+    </KeyboardAwareScrollView>
   );
 };
 
