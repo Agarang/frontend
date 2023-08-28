@@ -191,7 +191,7 @@ const Mypage = ({ navigation }) => {
               <IconContainer
                 source={require("../../assets/images/setting-icon.png")}
               />
-              <Contents>내 정보 관리</Contents>
+              <Contents>내 정보 관리ㅤㅤ</Contents>
               <IconContainer
                 style={{ width: "100%", justifyContent: "flex-end" }}
                 source={require("../../assets/images/right-arrow-icon.png")}
@@ -204,11 +204,12 @@ const Mypage = ({ navigation }) => {
               <IconContainer
                 source={require("../../assets/images/info-icon.png")}
               />
-              <Contents>서비스 소개</Contents>
+              <Contents>서비스 소개 ㅤㅤ</Contents>
               <IconContainer
                 style={{
                   width: "100%",
-                  justifyContent: "flex-end",
+                  marginRight: 0,
+                  paddingRight: 0,
                 }}
                 source={require("../../assets/images/right-arrow-icon.png")}
               />
@@ -218,7 +219,9 @@ const Mypage = ({ navigation }) => {
               <IconContainer
                 source={require("../../assets/images/announce-icon.png")}
               />
-              <Contents style={{ marginRight: "15px" }}>공지사항 ㅤ</Contents>
+              <Contents style={{ marginRight: "15px" }}>
+                공지사항 ㅤㅤ ㅤ
+              </Contents>
               <IconContainer
                 style={{
                   width: "100%",
