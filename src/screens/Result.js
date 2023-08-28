@@ -136,9 +136,9 @@ const Result = ({ navigation, route }) => {
   useEffect(() => {
     console.log(`이미지는 : ${image}`);
   });
-  console.log(generatedImage);
+  // console.log(generatedImage);
   console.log(typeof image);
-  console.log(`image: ${res.data}`);
+  // console.log(`image: ${res.data}`);
   return (
     <Container>
       <CloseBtnContainer onPress={() => navigation.navigate("Main")}>

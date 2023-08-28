@@ -341,9 +341,9 @@ const Main = ({ navigation }, props) => {
                       },
                     });
 
-                    setGeneratedImage(res.data.data.url);
-                    console.log(`Response : ${res.data.data.url}`);
-                    console.log(`generatedImage: ${generatedImage}`);
+                    await setGeneratedImage(res.data.data.url);
+                    await console.log(`Response : ${res.data.data.url}`);
+                    await console.log(`generatedImage: ${generatedImage}`);
                   } catch (error) {
                     console.log("Images Send Error : ", error);
                     console.log(`generatedImage: ${generatedImage}`);
