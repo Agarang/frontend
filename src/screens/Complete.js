@@ -50,7 +50,12 @@ const TextContainer = styled.Text`
   flex-direction: column;
 `;
 
-const Complete = ({ navigation }) => {
+const Complete = ({ navigation, route }) => {
+  const key = JSON.stringify(route.params.key);
+  console.log(`key: ${key}`);
+  // const generatedImage = route.params.generatedImage;
+  // console.log(typeof generatedImage);
+  // console.log(`generatedImage는 ${generatedImage}`);
   return (
     <Container>
       <StyledHeaderText>
@@ -67,7 +72,7 @@ const Complete = ({ navigation }) => {
         만나러 가보실까요?
       </ItemText>
 
-      <StyledButton onPress={() => navigation.navigate("Result")}>
+      <StyledButton onPress={() => navigation.navigate("Result", { key })}>
         <ButtonText>우리 아가 만나러 가기</ButtonText>
       </StyledButton>
     </Container>

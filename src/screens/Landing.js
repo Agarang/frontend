@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Text, Dimensions, TouchableOpacity, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import API from "../utils/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Width = Dimensions.get("window").width;
 const Height = Dimensions.get("window").height;
@@ -83,7 +84,10 @@ const Landing = ({ navigation }) => {
       },
     })
       .then((res) => {
-        console.log(res);
+        const jwt = res.data.data.accessToken;
+        console.log(jwt);
+        AsyncStorage.setItem("login_token", jwt);
+
         navigation.navigate("Main");
       })
       .catch((error) => {

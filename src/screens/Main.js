@@ -10,6 +10,8 @@ import {
 import styled from "styled-components/native";
 import * as ImagePicker from "expo-image-picker";
 import * as axios from "axios";
+import API from "../utils/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MainContainer = styled.View`
   flex: 1;
@@ -168,10 +170,12 @@ const ButtonText = styled.Text`
 
 const NavContainer = styled.View``;
 let result;
-let generatedImage;
+// let generatedImage;
 
-const Main = ({ navigation }) => {
+const Main = ({ navigation }, props) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageInfo, setSelectedImageInfo] = useState([]);
+  const [generatedImage, setGeneratedImage] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -185,6 +189,8 @@ const Main = ({ navigation }) => {
     })();
   }, []);
 
+  // useEffect(() => console.log(`제너레이티드 이미지: ${generatedImage}`));
+
   const pickImage = async () => {
     try {
       result = await ImagePicker.launchImageLibraryAsync({
@@ -195,7 +201,11 @@ const Main = ({ navigation }) => {
       });
 
       if (!result.canceled) {
-        setSelectedImage(result.assets.pop()?.uri);
+        const image = result.assets.pop();
+
+        console.log(`result uri : ${image.uri}`);
+        setSelectedImage(image.uri);
+        setSelectedImageInfo(image);
       }
     } catch (error) {
       console.log("Error picking image: ", error);
@@ -282,44 +292,66 @@ const Main = ({ navigation }) => {
             {selectedImage ? (
               <StyledButton
                 onPress={async () => {
+                  console.log(`Click Button Selected Image : ${selectedImage}`);
+
                   const body = new FormData();
 
                   try {
-                    const imageInfo = result?.assets?.pop();
+                    const imageInfo = selectedImageInfo;
 
-                    console.log(imageInfo);
-                    // const uri = imageInfo?.uri;
+                    const uri = imageInfo?.uri;
 
-                    // const fileName = imageInfo?.fileName;
+                    console.log(`url : ${uri}`);
 
-                    // const ext = fileName?.split(".").slice(-1).toString();
+                    const fileName = imageInfo?.fileName;
 
-                    // const type = `images/${ext}`;
+                    console.log(`fileName : ${fileName}`);
 
-                    // const fetus = {
-                    //   uri,
-                    //   type,
-                    //   name: fileName,
-                    // };
+                    const ext = fileName?.split(".").slice(-1).toString();
 
-                    body.append("fetus", imageInfo);
+                    console.log(`ext : ${ext}`);
 
-                    const res = await axios.post(
-                      "http://127.0.0.1/api/v1/photo/fetus",
-                      body,
-                      {
-                        headers: {
-                          "content-type": "multipart/form-data",
-                        },
-                      }
+                    const type = `images/${ext}`;
+
+                    const fetus = {
+                      uri,
+                      type,
+                      name: fileName,
+                    };
+
+                    console.log(
+                      `width : ${imageInfo.width},  height : ${imageInfo.height}`
                     );
-                    console.log(res.data);
-                    generatedImage = res.data.data.url;
+
+                    console.log(`fileSize : ${imageInfo.fileSize}`);
+
+                    console.log(`fetus : ${fetus}`);
+
+                    body.append("fetus", fetus);
+
+                    console.log(body);
+                    const jwt = await AsyncStorage.getItem("login_token");
+
+                    console.log(`jwt : ${jwt}`);
+
+                    const res = await API.post("/api/v1/photo/fetus", body, {
+                      headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${jwt}`,
+                      },
+                    });
+
+                    setGeneratedImage(res.data.data.url);
+                    console.log(`Response : ${res.data.data.url}`);
+                    console.log(`generatedImage: ${generatedImage}`);
                   } catch (error) {
                     console.log("Images Send Error : ", error);
+                    console.log(`generatedImage: ${generatedImage}`);
                   }
 
-                  return navigation.navigate("Complete");
+                  return navigation.navigate("Complete", {
+                    key: generatedImage,
+                  });
                 }}
               >
                 <ButtonText>아가 보러 가기</ButtonText>

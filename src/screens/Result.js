@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import { Text, StyleSheet, ImageBackground, Image, View } from "react-native";
 
@@ -124,7 +124,21 @@ const CloseBtnContainer = styled.TouchableOpacity`
   width: 100%;
   align-items: flex-end;
 `;
-const Result = ({ navigation }) => {
+const Result = ({ navigation, route }) => {
+  const [image, setImage] = useState("");
+  const key = route.params;
+  console.log(`키 두번째: ${key}`);
+  // const res = async () => {
+  //   await axios.get(generatedImage);
+  //   setImage(res.data);
+  // };
+
+  useEffect(() => {
+    console.log(`이미지는 : ${image}`);
+  });
+  console.log(generatedImage);
+  console.log(typeof image);
+  console.log(`image: ${res.data}`);
   return (
     <Container>
       <CloseBtnContainer onPress={() => navigation.navigate("Main")}>
