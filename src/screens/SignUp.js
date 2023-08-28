@@ -108,7 +108,18 @@ const SignUp = ({ navigation }) => {
       email: emailInput,
       phoneNumber: phoneInput,
       password: pwInput,
+      passwordConfirm: confirmPwInput,
+      nickname: "미등록",
+      name: "미등록",
+      birthday: new Date().toISOString(),
+      babyDue: new Date().toISOString(),
+      pregnancyDay: null,
+      fetusNickname: "콩닥이",
+      height: null,
+      weight: null,
+      profilePhotoUrl: null,
     };
+    console.log(request);
 
     API.post("/api/v1/user/sign-up", request, {
       headers: {

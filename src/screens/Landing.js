@@ -115,7 +115,7 @@ const Landing = ({ navigation }) => {
           <ButtonText>로그인</ButtonText>
         </StyledButton>
         <ButtonsContainer>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Main")}>
             <Text>아이디 찾기 </Text>
           </TouchableOpacity>
           <Text> / </Text>

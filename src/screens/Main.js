@@ -138,7 +138,7 @@ const GallaryText = styled.Text`
 
 const PicContainer = styled.View`
   width: 100%;
-  height: 60%;
+  height: 47%;
   padding-left: 15px;
   align-items: center;
   justify-content: center;
@@ -250,7 +250,7 @@ const Main = ({ navigation }) => {
           </DdayBackground>
         </SubHeaderContainer>
         <ImageBackground
-          source={require("../../assets/images/day-container-img.png")}
+          source={require("../../assets/images/day-container2-img.png")}
           style={styles.dayImage}
         ></ImageBackground>
         <PicContainer>
@@ -342,8 +342,12 @@ const Main = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   bgImage: { width: "100%", height: "100%" },
-  picBack: { width: 350, height: 420 },
-  dayImage: { width: 400, height: 100 },
+  picBack: { width: 350, height: 420, marginTop: 0 },
+  dayImage: {
+    width: 435,
+    height: 120,
+    alignSelf: "center",
+  },
 });
 
 export default Main;
