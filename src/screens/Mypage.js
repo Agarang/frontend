@@ -141,6 +141,26 @@ const ContentsContainer = styled.TouchableOpacity`
   margin: 12px;
 `;
 
+const NavContainer = styled.View`
+  width: 100%;
+  align-items: center;
+`;
+
+const Nav = styled.ImageBackground`
+  width: 210px;
+  margin-left: 9px;
+  height: 85px;
+  margin-bottom: 5px;
+  flex-direction: row;
+`;
+
+const ChatIcon = styled.Image`
+  width: 60px;
+  height: 60px;
+  margin-left: 65px;
+  object-fit: contain;
+`;
+
 const Mypage = ({ navigation }) => {
   return (
     <MainContainer>
@@ -233,6 +253,13 @@ const Mypage = ({ navigation }) => {
             <Image source={require("../../assets/images/dotted-line.png")} />
           </InfoContainer>
         </Container>
+        <NavContainer>
+          <Nav source={require("../../assets/images/main-navigation-img.png")}>
+            <IconContainer onPress={() => navigation.navigate("Chat")}>
+              <ChatIcon source={require("../../assets/images/chat_icon.png")} />
+            </IconContainer>
+          </Nav>
+        </NavContainer>
       </ImageBackground>
     </MainContainer>
   );

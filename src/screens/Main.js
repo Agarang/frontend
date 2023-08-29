@@ -113,10 +113,6 @@ const ToGalaryContainer = styled.TouchableOpacity`
   text-align: center;
 `;
 
-const UploadContainer = styled.View`
-  float: left;
-`;
-
 const ChatIcon = styled.Image`
   width: 60px;
   height: 60px;
