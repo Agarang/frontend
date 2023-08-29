@@ -12,6 +12,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as axios from "axios";
 import API from "../utils/API";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Spinner from "react-native-loading-spinner-overlay";
 
 const MainContainer = styled.View`
   flex: 1;
@@ -192,7 +193,8 @@ const Icon = styled.Image`
 let result;
 // let generatedImage;
 
-const Main = ({ navigation }, props) => {
+const Main = ({ navigation }) => {
+  const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedImageInfo, setSelectedImageInfo] = useState([]);
   const [generatedImage, setGeneratedImage] = useState("");
@@ -239,6 +241,14 @@ const Main = ({ navigation }, props) => {
       pickImage();
     }
   };
+
+  const spinner = (
+    <Spinner
+      visible={loading}
+      textContent={"로딩 중..."}
+      textStyle={{ color: "white" }}
+    />
+  );
 
   return (
     <MainContainer>
@@ -323,6 +333,8 @@ const Main = ({ navigation }, props) => {
                   const body = new FormData();
 
                   try {
+                    setLoading(true);
+
                     const imageInfo = selectedImageInfo;
 
                     const uri = imageInfo?.uri;
@@ -368,8 +380,8 @@ const Main = ({ navigation }, props) => {
                     });
 
                     setGeneratedImage(res.data.data.url);
-
-                    console.log(`Response : ${res.data.data.url}`);
+                    setLoading(false),
+                      console.log(`Response : ${res.data.data.url}`);
                     url = res.data.data.url;
                   } catch (error) {
                     console.log("Images Send Error : ", error);
