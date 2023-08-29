@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Text, Image } from "react-native";
+import { Text, Image, View, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { GiftedChat, Bubble, Avatar } from "react-native-gifted-chat";
 import API from "../utils/API";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
 
 const Container = styled.SafeAreaView`
   background-color: #fff1ef;
@@ -79,6 +80,48 @@ const Chat = ({ navigation }) => {
       },
     ]);
   }, []);
+
+  const renderBubble = (props) => {
+    const { currentMessage } = props;
+    return (
+      <>
+        <View>
+          <Text style={{ marginLeft: 5, marginBottom: 2 }}>
+            {currentMessage.user.name}
+          </Text>
+          <Bubble
+            {...props}
+            wrapperStyle={{
+              right: {
+                backgroundColor: "#FF7360", // 오른쪽 말풍선 배경색
+              },
+              left: {
+                backgroundColor: "#ffffff", // 왼쪽 말풍선 배경색
+              },
+            }}
+          />
+        </View>
+      </>
+    );
+  };
+
+  const renderSend = (props) => {
+    return (
+      <TouchableOpacity
+        style={{
+          alignSelf: "flex-end",
+          marginRight: 15,
+        }}
+        onPress={() => props.onSend({ text: props.text.trim() }, true)}
+      >
+        <Image
+          source={require("../../assets/images/send-btn.png")}
+          style={{ width: 25, height: 25, marginBottom: 10 }}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   const onSend = useCallback(async (messages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
@@ -114,7 +157,8 @@ const Chat = ({ navigation }) => {
           createdAt: new Date(),
           user: {
             _id: i++,
-            name: "Space",
+            name: "콩닥이",
+            avatar: require("../../assets/images/baby-profile-img.png"),
           },
         },
       ]);
@@ -143,12 +187,15 @@ const Chat = ({ navigation }) => {
         placeholder="우리 아가랑 대화해 보세요"
         messages={messages}
         onSend={(messages) => onSend(messages)}
-        bottomOffset={35}
+        bottomOffset={40}
         user={{
           _id: 1,
           text: "우리가 만나는 날까지 28일 남았어요!",
-          name: "React Native",
+          // name: "콩닥이",
         }}
+        renderBubble={renderBubble}
+        renderSend={renderSend}
+        // renderMessage={renderMessage}
       />
     </Container>
   );
