@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, StyleSheet, ImageBackground, Image } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import styled from "styled-components/native";
 
 const MainContainer = styled.View`
@@ -133,10 +139,9 @@ const IconContainer = styled.TouchableOpacity`
   width: 25px;
   height: 25px;
   object-fit: contain;
-  margin-left: 7px;
   margin-top: 7px;
   margin-bottom: 7px;
-  padding-bottom: 2px;
+  opacity: 0;
 `;
 
 const Contents = styled.Text`
@@ -166,10 +171,23 @@ const Nav = styled.ImageBackground`
 
 const ChatIcon = styled.Image`
   width: 60px;
-  height: 60px;
-  margin-left: 62px;
-  background-color: red;
+  height: 50px;
+  margin-left: 22px;
   object-fit: contain;
+`;
+
+const ProfileIcon = styled.Image`
+  width: 20px;
+  height: 20px;
+  margin-left: 75px;
+  margin-top: 32px;
+`;
+
+const HomeIcon = styled.Image`
+  width: 20px;
+  height: 20px;
+  margin-left: 28px;
+  margin-top: 32px;
 `;
 
 const Mypage = ({ navigation }) => {
@@ -264,10 +282,21 @@ const Mypage = ({ navigation }) => {
           </InfoContainer>
         </Container>
         <NavContainer>
-          <Nav source={require("../../assets/images/main-navigation-img.png")}>
+          <Nav source={require("../../assets/images/navigation-img.png")}>
+            <TouchableOpacity
+              style={{ opacity: 0 }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              <HomeIcon
+                source={require("../../assets/images/home-nav-icon.png")}
+              />
+            </TouchableOpacity>
             <IconContainer onPress={() => navigation.navigate("Chat")}>
               <ChatIcon source={require("../../assets/images/chat_icon.png")} />
             </IconContainer>
+            <ProfileIcon
+              source={require("../../assets/images/profile-nav-icon-selected.png")}
+            />
           </Nav>
         </NavContainer>
       </ImageBackground>
