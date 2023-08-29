@@ -126,18 +126,18 @@ const CloseBtnContainer = styled.TouchableOpacity`
 `;
 const Result = ({ navigation, route }) => {
   const [image, setImage] = useState("");
-  const key = route.params;
-  console.log(`키 두번째: ${key}`);
+  const url = route.params.url;
+  console.log(`키 두번째: ${url}`);
   // const res = async () => {
   //   await axios.get(generatedImage);
   //   setImage(res.data);
   // };
 
-  useEffect(() => {
-    console.log(`이미지는 : ${image}`);
-  });
+  // useEffect(() => {
+  //   console.log(`이미지는 : ${image}`);
+  // });
   // console.log(generatedImage);
-  console.log(typeof image);
+  // console.log(typeof image);
   // console.log(`image: ${res.data}`);
   return (
     <Container>
@@ -158,7 +158,7 @@ const Result = ({ navigation, route }) => {
           style={styles.picBack}
         >
           <Image
-            source={require("../../assets/images/interview-after-img.png")}
+            source={{ uri: url }}
             style={{
               width: 300,
               height: 300,
@@ -193,7 +193,7 @@ const Result = ({ navigation, route }) => {
         <RetryButton onPress={() => navigation.navigate("main")}>
           <RetryText>다시하기</RetryText>
         </RetryButton>
-        <MeetButton onPress={() => navigation.navigate("Result")}>
+        <MeetButton>
           <ButtonText>저장하기</ButtonText>
         </MeetButton>
       </ButtonsContainer>

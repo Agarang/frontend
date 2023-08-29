@@ -51,11 +51,10 @@ const TextContainer = styled.Text`
 `;
 
 const Complete = ({ navigation, route }) => {
-  const key = JSON.stringify(route.params.key);
-  console.log(`key: ${key}`);
-  // const generatedImage = route.params.generatedImage;
-  // console.log(typeof generatedImage);
-  // console.log(`generatedImage는 ${generatedImage}`);
+  // const url = JSON.stringify(route.params.url);
+  // console.log(`key: ${url}`);
+  const url = route.params.url;
+  console.log(`url : ${url}`);
   return (
     <Container>
       <StyledHeaderText>
@@ -72,7 +71,7 @@ const Complete = ({ navigation, route }) => {
         만나러 가보실까요?
       </ItemText>
 
-      <StyledButton onPress={() => navigation.navigate("Result", { key })}>
+      <StyledButton onPress={() => navigation.navigate("Result", { url })}>
         <ButtonText>우리 아가 만나러 가기</ButtonText>
       </StyledButton>
     </Container>

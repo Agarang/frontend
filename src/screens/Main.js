@@ -168,6 +168,10 @@ const ButtonText = styled.Text`
   font-size: 15px;
 `;
 
+const DateText = styled.Text`
+  color: white;
+  margin-top: 50px;
+`;
 const NavContainer = styled.View``;
 let result;
 // let generatedImage;
@@ -249,6 +253,8 @@ const Main = ({ navigation }, props) => {
             <Text style={{ color: "#FF7360" }}>엄마</Text>님 안녕하세요!{"\n"}
             콩닥이와 대화해요!
           </StyledHeaderText>
+
+          <DateText>2023.09</DateText>
 
           <DdayBackground
             source={require("../../assets/images/dday-background.png")}
@@ -341,16 +347,17 @@ const Main = ({ navigation }, props) => {
                       },
                     });
 
-                    await setGeneratedImage(res.data.data.url);
-                    await console.log(`Response : ${res.data.data.url}`);
-                    await console.log(`generatedImage: ${generatedImage}`);
+                    setGeneratedImage(res.data.data.url);
+
+                    console.log(`Response : ${res.data.data.url}`);
+                    url = res.data.data.url;
                   } catch (error) {
                     console.log("Images Send Error : ", error);
                     console.log(`generatedImage: ${generatedImage}`);
                   }
 
                   return navigation.navigate("Complete", {
-                    key: generatedImage,
+                    url,
                   });
                 }}
               >
