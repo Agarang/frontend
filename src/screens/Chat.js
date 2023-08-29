@@ -33,7 +33,7 @@ const ProfileBtnContainer = styled.TouchableOpacity`
 `;
 
 const StyledIcon = styled.Image`
-  margin: 7px 15px 0 15px;
+  margin: 8px 15px 0 15px;
   width: 23px;
   height: 23px;
   object-fit: contain;
@@ -44,7 +44,7 @@ const Chat = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  let i = 1;
+  let i = 3;
 
   useEffect(() => {
     // setMessages([
@@ -63,19 +63,22 @@ const Chat = ({ navigation }) => {
       setLoading(false);
     };
     fetchUsers();
-    //   {
-    //     _id: 1,
-    //     text: "엄마 오늘 하루는 어떠신가요?",
-    //     createdAt: new Date(),
-    //     user: {
-    //       _id: 2,
-    //       name: "React Native",
-    //       avatar: "https://placeimg.com/140/140/any",
-    //     },
-    //   },
-    // ]);
   }, []);
 
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: "우리가 만나는 날까지 28일 남았어요!",
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: "콩닥이",
+          avatar: require("../../assets/images/baby-profile-img.png"),
+        },
+      },
+    ]);
+  }, []);
   const onSend = useCallback(async (messages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
@@ -137,11 +140,14 @@ const Chat = ({ navigation }) => {
       </MainHeaderContainer>
       <Image source={require("../../assets/images/line-img.png")} />
       <GiftedChat
+        placeholder="우리 아가랑 대화해 보세요"
         messages={messages}
         onSend={(messages) => onSend(messages)}
-        bottomOffset={10}
+        bottomOffset={35}
         user={{
           _id: 1,
+          text: "우리가 만나는 날까지 28일 남았어요!",
+          name: "React Native",
         }}
       />
     </Container>
