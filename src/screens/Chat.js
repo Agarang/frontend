@@ -22,6 +22,7 @@ const MainHeaderContainer = styled.SafeAreaView`
 
 const HeaderText = styled.Text`
   align-self: center;
+  margin-top: 4px;
   font-weight: 600;
   font-size: 20px;
 `;
@@ -32,7 +33,7 @@ const ProfileBtnContainer = styled.TouchableOpacity`
 `;
 
 const StyledIcon = styled.Image`
-  margin: 8px 8px 0 8px;
+  margin: 7px 15px 0 15px;
   width: 23px;
   height: 23px;
   object-fit: contain;

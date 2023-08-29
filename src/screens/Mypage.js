@@ -98,7 +98,7 @@ const BabyTitle = styled.Text`
   font-weight: 600;
 `;
 
-const StyledImage = styled.Image`
+const StyledImage = styled.ImageBackground`
   width: 85px;
   height: 85px;
   margin-top: 2px;
@@ -121,12 +121,22 @@ const DateText = styled.Text`
   margin-left: 20px;
 `;
 
-const IconContainer = styled.Image`
+const ArrowContainer = styled.Image`
   width: 25px;
   height: 25px;
   object-fit: contain;
   margin-left: 7px;
   margin-top: 7px;
+`;
+
+const IconContainer = styled.TouchableOpacity`
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  margin-left: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  padding-bottom: 2px;
 `;
 
 const Contents = styled.Text`
@@ -149,15 +159,16 @@ const NavContainer = styled.View`
 const Nav = styled.ImageBackground`
   width: 210px;
   margin-left: 9px;
-  height: 85px;
-  margin-bottom: 5px;
+  height: 80px;
+  margin-bottom: 40px;
   flex-direction: row;
 `;
 
 const ChatIcon = styled.Image`
   width: 60px;
   height: 60px;
-  margin-left: 65px;
+  margin-left: 62px;
+  background-color: red;
   object-fit: contain;
 `;
 
@@ -181,7 +192,6 @@ const Mypage = ({ navigation }) => {
               <StyledText>
                 <Text style={{ color: "#FF7360" }}>콩닥맘</Text> 님
               </StyledText>
-
               <SmallText>콩닥이 엄마 • D-28</SmallText>
             </ProfileNameContainer>
           </ProfileContainer>
@@ -207,12 +217,12 @@ const Mypage = ({ navigation }) => {
             </StyledButton>
           </BabyContainer>
           <InfoContainer>
-            <ContentsContainer>
-              <IconContainer
+            <ContentsContainer style={{ marginTop: 40 }}>
+              <ArrowContainer
                 source={require("../../assets/images/setting-icon.png")}
               />
               <Contents>내 정보 관리ㅤㅤ</Contents>
-              <IconContainer
+              <ArrowContainer
                 style={{ width: "100%", justifyContent: "flex-end" }}
                 source={require("../../assets/images/right-arrow-icon.png")}
               />
@@ -221,11 +231,11 @@ const Mypage = ({ navigation }) => {
             <ContentsContainer
               onPress={() => navigation.navigate("ServiceInfo")}
             >
-              <IconContainer
+              <ArrowContainer
                 source={require("../../assets/images/info-icon.png")}
               />
               <Contents>서비스 소개 ㅤㅤ</Contents>
-              <IconContainer
+              <ArrowContainer
                 style={{
                   width: "100%",
                   marginRight: 0,
@@ -236,13 +246,13 @@ const Mypage = ({ navigation }) => {
             </ContentsContainer>
             <Image source={require("../../assets/images/dotted-line.png")} />
             <ContentsContainer>
-              <IconContainer
+              <ArrowContainer
                 source={require("../../assets/images/announce-icon.png")}
               />
               <Contents style={{ marginRight: "15px" }}>
                 공지사항 ㅤㅤ ㅤ
               </Contents>
-              <IconContainer
+              <ArrowContainer
                 style={{
                   width: "100%",
                   justifyContent: "flex-end",
