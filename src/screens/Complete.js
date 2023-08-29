@@ -51,8 +51,6 @@ const TextContainer = styled.Text`
 `;
 
 const Complete = ({ navigation, route }) => {
-  // const url = JSON.stringify(route.params.url);
-  // console.log(`key: ${url}`);
   const url = route.params.url;
   console.log(`url : ${url}`);
   return (
@@ -70,7 +68,6 @@ const Complete = ({ navigation, route }) => {
         <Text style={{ color: "#FF7360", fontWeight: 600 }}>콩닥이</Text>를
         만나러 가보실까요?
       </ItemText>
-
       <StyledButton onPress={() => navigation.navigate("Result", { url })}>
         <ButtonText>우리 아가 만나러 가기</ButtonText>
       </StyledButton>

@@ -37,25 +37,23 @@ const MainHeaderContainer = styled.SafeAreaView`
 
 const StyledHeaderText = styled.Text`
   padding-left: 20px;
-  font-size: 18px;
-  margin: 2px;
+  font-size: 19px;
+  margin: 15px 2px 2px 2px;
   font-weight: 700;
 `;
 
 const SubHeaderContainer = styled.View`
-  display: block;
   width: 100%;
   margin: 12px 0px 5px 5px;
+  padding-right: 0;
   display: flex;
   flex-direction: row;
-  flex-flow: row nowrap;
-  justify-content: space-between;
 `;
 
 const DdayBackground = styled.ImageBackground`
   width: 150px;
   height: 100px;
-  object-fit: cover;
+  margin-left: 50px;
   padding: 30px 30px 30px 37px;
 `;
 
@@ -84,15 +82,18 @@ const LogoText = styled.Text`
 `;
 
 const StyledIcon = styled.Image`
-  width: 30px;
-  height: 30px;
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 `;
 
 const LogoIcon = styled.Image`
-  margin-top: 17px;
+  margin-top: 21px;
   margin-left: 17px;
-  width: 140px;
+  width: 130px;
   height: 30px;
   object-fit: contain;
 `;
@@ -117,8 +118,9 @@ const UploadContainer = styled.View`
 `;
 
 const ChatIcon = styled.Image`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+  margin-left: 65px;
   object-fit: contain;
 `;
 
@@ -172,7 +174,23 @@ const DateText = styled.Text`
   color: white;
   margin-top: 50px;
 `;
-const NavContainer = styled.View``;
+const NavContainer = styled.View`
+  width: 100%;
+  align-items: center;
+`;
+
+const Nav = styled.ImageBackground`
+  width: 210px;
+  margin-left: 9px;
+  height: 85px;
+  margin-bottom: 5px;
+  flex-direction: row;
+`;
+
+const Icon = styled.Image`
+  width: 20px;
+  height: 20px;
+`;
 let result;
 // let generatedImage;
 
@@ -252,19 +270,23 @@ const Main = ({ navigation }, props) => {
             <Text style={{ color: "#FF7360" }}>콩닥이</Text>의{" "}
             <Text style={{ color: "#FF7360" }}>엄마</Text>님 안녕하세요!{"\n"}
             콩닥이와 대화해요!
+            <DateText>{"\n\n"}2023.09</DateText>
           </StyledHeaderText>
-
-          <DateText>2023.09</DateText>
 
           <DdayBackground
             source={require("../../assets/images/dday-background.png")}
           >
             <DdayText>콩닥이와 만날 날</DdayText>
-            <DdayText>
-              D-<Text style={{ fontWeight: 700, fontSize: 35 }}> 28</Text>
+            <DdayText style={{ marginLeft: 5 }}>
+              D-
+              <Text style={{ fontWeight: 700, fontSize: 35, marginTop: 5 }}>
+                {" "}
+                28
+              </Text>
             </DdayText>
           </DdayBackground>
         </SubHeaderContainer>
+
         <ImageBackground
           source={require("../../assets/images/day-container2-img.png")}
           style={styles.dayImage}
@@ -370,10 +392,13 @@ const Main = ({ navigation }, props) => {
             )}
           </ImageBackground>
         </PicContainer>
-
-        <IconContainer onPress={() => navigation.navigate("Chat")}>
-          <ChatIcon source={require("../../assets/images/chat_icon.png")} />
-        </IconContainer>
+        <NavContainer>
+          <Nav source={require("../../assets/images/main-navigation-img.png")}>
+            <IconContainer onPress={() => navigation.navigate("Chat")}>
+              <ChatIcon source={require("../../assets/images/chat_icon.png")} />
+            </IconContainer>
+          </Nav>
+        </NavContainer>
       </ImageBackground>
     </MainContainer>
   );
@@ -384,7 +409,7 @@ const styles = StyleSheet.create({
   picBack: { width: 350, height: 420, marginTop: 0 },
   dayImage: {
     width: 435,
-    height: 120,
+    height: 108,
     alignSelf: "center",
   },
 });
