@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Dimensions, Image, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import API from "../utils/API";
+
 const Height = Dimensions.get("window").height;
 
 const Container = styled.SafeAreaView`

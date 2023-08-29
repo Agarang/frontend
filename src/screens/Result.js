@@ -190,7 +190,7 @@ const Result = ({ navigation, route }) => {
         </ImageBackground>
       </PicContainer>
       <ButtonsContainer>
-        <RetryButton onPress={() => navigation.navigate("main")}>
+        <RetryButton onPress={() => navigation.navigate("Main")}>
           <RetryText>다시하기</RetryText>
         </RetryButton>
         <MeetButton>

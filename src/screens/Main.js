@@ -128,6 +128,7 @@ const ChatIcon = styled.Image`
 const GalaryIcon = styled.Image`
   width: 40px;
   height: 40px;
+  margin-left: 80px;
   object-fit: contain;
 `;
 
@@ -135,6 +136,7 @@ const GallaryText = styled.Text`
   color: #ff8f80;
   align-self: center;
   justify-content: center;
+  text-align: center;
   margin-top: 7px;
   font-weight: 800;
   font-size: 18px;
@@ -165,7 +167,7 @@ const ButtonText = styled.Text`
   color: white;
   align-self: center;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 7px;
   font-weight: 600;
   font-size: 15px;
 `;
