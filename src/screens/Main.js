@@ -191,10 +191,9 @@ const Icon = styled.Image`
   height: 20px;
 `;
 let result;
-// let generatedImage;
 
 const Main = ({ navigation }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedImageInfo, setSelectedImageInfo] = useState([]);
   const [generatedImage, setGeneratedImage] = useState("");
@@ -242,17 +241,20 @@ const Main = ({ navigation }) => {
     }
   };
 
-  const spinner = (
-    <Spinner
-      visible={loading}
-      textContent={"로딩 중..."}
-      textStyle={{ color: "white" }}
-    />
-  );
+  useEffect(() => {
+    setSelectedImage(null);
+  }, []);
+
+  // const spinner = (
+  //   <Spinner
+  //     visible={loading}
+  //     textContent={"로딩 중..."}
+  //     textStyle={{ color: "white" }}
+  //   />
+  // );
 
   return (
     <MainContainer>
-      {/* 전체 배경 화면 */}
       <ImageBackground
         source={require("../../assets/images/bg-img-seperated.png")}
         style={styles.bgImage}
@@ -333,8 +335,6 @@ const Main = ({ navigation }) => {
                   const body = new FormData();
 
                   try {
-                    setLoading(true);
-
                     const imageInfo = selectedImageInfo;
 
                     const uri = imageInfo?.uri;
