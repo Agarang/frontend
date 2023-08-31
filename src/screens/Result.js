@@ -124,7 +124,7 @@ const CloseBtnContainer = styled.TouchableOpacity`
   width: 100%;
   align-items: flex-end;
 `;
-const Result = ({ navigation, route }) => {
+const Result = ({ navigation, route, navigate }) => {
   const [image, setImage] = useState("");
   const url = route.params.url;
   console.log(`키 두번째: ${url}`);
@@ -190,7 +190,12 @@ const Result = ({ navigation, route }) => {
         </ImageBackground>
       </PicContainer>
       <ButtonsContainer>
-        <RetryButton onPress={() => navigation.navigate("Main")}>
+        <RetryButton
+          onPress={() => {
+            navigation.navigate("Main"),
+              navigation.reset({ routes: [{ name: "Main" }] });
+          }}
+        >
           <RetryText>다시하기</RetryText>
         </RetryButton>
         <MeetButton>
