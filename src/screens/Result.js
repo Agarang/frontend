@@ -126,7 +126,9 @@ const CloseBtnContainer = styled.TouchableOpacity`
 `;
 const Result = ({ navigation, route }) => {
   const [image, setImage] = useState("");
+  const [resetimage, setResetImage] = useState(false);
   const url = route.params.url;
+
   console.log(`키 두번째: ${url}`);
   // const res = async () => {
   //   await axios.get(generatedImage);
@@ -139,6 +141,7 @@ const Result = ({ navigation, route }) => {
   // console.log(generatedImage);
   // console.log(typeof image);
   // console.log(`image: ${res.data}`);
+  useEffect(() => {});
   return (
     <Container>
       <CloseBtnContainer onPress={() => navigation.navigate("Main")}>

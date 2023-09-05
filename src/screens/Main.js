@@ -197,6 +197,7 @@ const Main = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedImageInfo, setSelectedImageInfo] = useState([]);
   const [generatedImage, setGeneratedImage] = useState("");
+  const [resetImage, setResetImage] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -241,17 +242,13 @@ const Main = ({ navigation }) => {
     }
   };
 
-  useEffect(() => {
-    setSelectedImage(null);
-  }, []);
-
-  // const spinner = (
-  //   <Spinner
-  //     visible={loading}
-  //     textContent={"로딩 중..."}
-  //     textStyle={{ color: "white" }}
-  //   />
-  // );
+  const spinner = (
+    <Spinner
+      visible={loading}
+      textContent={"로딩 중..."}
+      textStyle={{ color: "white" }}
+    />
+  );
 
   return (
     <MainContainer>
@@ -380,8 +377,7 @@ const Main = ({ navigation }) => {
                     });
 
                     setGeneratedImage(res.data.data.url);
-                    setLoading(false),
-                      console.log(`Response : ${res.data.data.url}`);
+                    console.log(`Response : ${res.data.data.url}`);
                     url = res.data.data.url;
                   } catch (error) {
                     console.log("Images Send Error : ", error);

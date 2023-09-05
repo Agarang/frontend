@@ -52,6 +52,7 @@ const TextContainer = styled.Text`
 
 const Complete = ({ navigation, route }) => {
   const url = route.params.url;
+
   console.log(`url : ${url}`);
   return (
     <Container>
